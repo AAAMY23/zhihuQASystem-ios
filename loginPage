@@ -1,0 +1,74 @@
+#import "ViewController.h"
+
+@interface ViewController ()
+//weak和strong的意思是强弱指针
+//@property (nonatomic,weak) UILabel *lable;
+@end
+
+@implementation ViewController
+/**
+ viewdidload方法
+ 1 系统调用
+ 2 控制器的view加载完毕的时候调用
+ 3 控件的初始化 数据的初始化（懒加载）
+ */
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    // Do any additional setup after loading the view.
+    //默认的UIButton提供imageView和titleLable的基本布局
+    //通过设置enabled（能否被点击）selected（是否已经被选中）highlighted（点击过程时的样式）
+    UIButton *deleteButton=[[UIButton alloc]init];
+    deleteButton.frame=CGRectMake(22.f, 66.f, 18.f, 18.f);
+    [deleteButton setImage:[UIImage imageNamed:@"titlebar_close"] forState:UIControlStateNormal];
+    [self.view addSubview:deleteButton];
+    
+    
+    //textcolor linebreakmode省略模式 numbleOfLines分为几行
+    UILabel *lable=[[UILabel alloc]init];
+
+    //CGRectMake就是用来确定在坐标轴中的位置以及尺寸的
+    lable.frame=CGRectMake(40.f, 129.f, 200.f, 100.f);
+    lable.text=@"密码登录";
+    //文本对齐方式
+    lable.textAlignment=NSTextAlignmentLeft;
+    //文本大小 加粗
+    lable.font=[UIFont boldSystemFontOfSize:25.f];
+    [self.view addSubview:lable];
+    
+    UITextField *textfield=[[UITextField alloc]init];
+    textfield.frame=CGRectMake(40.f, 220.f, 301.f, 40.f);
+    textfield.placeholder=@"手机号或邮箱";
+    textfield.font=[UIFont fontWithName:@"boldface" size:12.f];
+    textfield.textColor=[UIColor colorWithRed:21/255.0 green:21/255.0 blue:21/255.0 alpha:1.0];
+    textfield.autocorrectionType=UITextAutocorrectionTypeNo;
+    CALayer *bottomLine = [CALayer layer];
+    bottomLine.frame = CGRectMake(0.f, 40.f, 301.f, 1.f);
+    bottomLine.backgroundColor = [UIColor colorWithRed:220/255.0 green:220/255.0 blue:220/255.0 alpha:1.0].CGColor;
+    [textfield setBorderStyle:UITextBorderStyleNone];
+    [textfield.layer addSublayer:bottomLine];
+    [self.view addSubview:textfield];
+    
+    
+    UITextField *textfield1=[[UITextField alloc]init];
+    textfield1.frame=CGRectMake(40.f, 290.f, 301.f, 40.f);
+    //textfield1.text=@"密码";
+    textfield1.placeholder=@"密码";
+    //密码输入之后会保密
+    textfield1.secureTextEntry=YES;
+    CALayer *bottomLine1 = [CALayer layer];
+    bottomLine1.frame = CGRectMake(0.f, 40.f, 301.f, 1.f);
+    bottomLine1.backgroundColor = [UIColor colorWithRed:220/255.0 green:220/255.0 blue:220/255.0 alpha:1.0].CGColor;
+    [textfield1 setBorderStyle:UITextBorderStyleNone];
+    [textfield1.layer addSublayer:bottomLine1];
+    [self.view addSubview:textfield1];
+    
+    UIButton *button=[[UIButton alloc]init];
+    button.frame=CGRectMake(40.f, 350.f, 301.f, 40.f);
+    button.backgroundColor=[UIColor colorWithRed:186/255.0 green:217/255.0 blue:251/255.0 alpha:1.0];
+    [button setTitle:@"登录" forState:UIControlStateNormal];
+    [self.view addSubview:button];
+
+}
+
+@end

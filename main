@@ -1,0 +1,62 @@
+#import "ViewController.h"
+#import "NormalTableViewCell.h"
+
+@interface ViewController ()<UITableViewDataSource,UITableViewDelegate>
+
+@end
+
+@implementation ViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    UIScrollView *scrollview=[[UIScrollView alloc]initWithFrame:self.view.bounds];
+    scrollview.contentSize=CGSizeMake(self.view.bounds.size.width*2, self.view.bounds.size.height);
+    scrollview.pagingEnabled=YES;
+    [self.view addSubview:scrollview];
+    
+    UITableView *tableView=[[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStyleGrouped ];
+    tableView.dataSource=self;
+    tableView.delegate=self;
+    tableView.sectionHeaderHeight=8;
+    tableView.sectionFooterHeight=8;
+    [self.view addSubview:tableView];
+    
+    UITableView *tableview2=[[UITableView alloc]init];
+    tableview2.frame=CGRectMake(self.view.bounds.size.width, 0, self.view.bounds.size.width, self.view.bounds.size.height);
+    tableview2.backgroundColor=[UIColor purpleColor];
+    
+    [scrollview addSubview:tableView];
+    [scrollview addSubview:tableview2];
+    
+    
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
+    
+    UIViewController *viewcontroller1=[[UIViewController alloc]init];
+    viewcontroller1.title=[NSString stringWithFormat:@"%@",@(indexPath.row)];
+    viewcontroller1.view.backgroundColor=[UIColor whiteColor];
+    [self.navigationController pushViewController:viewcontroller1 animated:YES];
+}
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 10;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 1;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 200;
+}
+
+
+
+- (NormalTableViewCell *)tableView:(NormalTableViewCell *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    NormalTableViewCell *tableViewCell=[[NormalTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"id"];
+
+    return tableViewCell;
+}
+
+@end

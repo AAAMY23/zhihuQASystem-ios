@@ -1,0 +1,49 @@
+#import "askQuestionViewController.h"
+
+@interface askQuestionViewController ()
+
+@end
+
+@implementation askQuestionViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    UIScrollView *scrollview=[[UIScrollView alloc]initWithFrame:self.view.bounds];
+    scrollview.contentSize=CGSizeMake(self.view.bounds.size.width, self.view.bounds.size.height*1.5);
+    [self.view addSubview:scrollview];
+    UITableView *mainQ=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height*1.5) style:UITableViewStylePlain];
+    mainQ.separatorStyle=UITableViewCellSelectionStyleNone;
+
+    //mainQ.tableHeaderView=textQ;
+    UILabel *tip=[[UILabel alloc]initWithFrame:CGRectMake(5, 40.f, self.view.bounds.size.width-10, 40)];
+    tip.text=@"让你的第一个提问获得更多解答·保持文字简练·添加合适的话题";
+    
+    UITextField *textAdd=[[UITextField alloc]initWithFrame:CGRectMake(0, 80, self.view.bounds.size.width, 200)];
+    textAdd.placeholder=@"对问题补充说明，可以更快获得解答（选填）";
+    [scrollview addSubview:mainQ];
+    [mainQ addSubview:tip];
+    [mainQ addSubview:textAdd];
+    
+    UITextField *textQ=[[UITextField alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 40.f)];
+    textQ.placeholder=@"请输入你的问题";
+    textQ.backgroundColor=[UIColor whiteColor];
+    [self.view addSubview:textQ];
+
+}
+
+- (UITableViewCell *)tableView:(UITableViewCell *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *tableViewCell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"id"];
+    tableViewCell.backgroundColor=[UIColor greenColor];
+    return tableViewCell;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+        return 1;
+    }
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 40;
+}
+
+
+@end

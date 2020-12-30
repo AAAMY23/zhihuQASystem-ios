@@ -1,0 +1,30 @@
+#import "AppDelegate.h"
+#import "questionPlazaViewController.h"
+#import "myPageViewController.h"
+
+@interface AppDelegate ()
+
+@end
+
+@implementation AppDelegate
+
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
+    self.window=[[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    UITabBarController *tabbarController=[[UITabBarController alloc]init];
+    
+    questionPlazaViewController *viewController=[[questionPlazaViewController alloc]init];
+        
+    myPageViewController *controller2=[[myPageViewController alloc]init];
+    
+    
+    [tabbarController setViewControllers:@[viewController,controller2]];
+    UINavigationController *navigationcontroller=[[UINavigationController alloc]initWithRootViewController:tabbarController];
+    //navigationcontroller.navigationBar.topItem.title=@"欢迎来到知乎";
+    self.window.rootViewController=navigationcontroller;
+    [self.window makeKeyAndVisible];
+    return YES;
+}
+
+@end

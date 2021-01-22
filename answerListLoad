@@ -12,7 +12,6 @@
         NSMutableArray *listArray=[[NSMutableArray alloc]init];
         for(NSDictionary *str in answerListArray){
             answerLoaditem *list=[[answerLoaditem alloc]init];
-            //answerLoaditem *list=[[answerLoaditem alloc]init];
             [list configWithDictonary:str];
             [listArray addObject:list];
         }

@@ -1,6 +1,5 @@
 #import "registerstep2ViewController.h"
 #import "ViewController.h"
-#import "MBProgressHUD.h"
 
 @interface registerstep2ViewController ()
 @property(nonatomic,strong) UITextField *password1text;
@@ -77,21 +76,27 @@
     if([self.password1text.text isEqualToString:self.password2text.text]){
     //1、确定请求路径
     NSURL *registerUrl=[NSURL URLWithString:[NSString stringWithFormat:@"http://8.136.142.201:9090/user/register"]];
+
     //2、创建请求对象
     NSMutableURLRequest *registerRequest=[NSMutableURLRequest requestWithURL:registerUrl];
     registerRequest.HTTPMethod=@"POST";
-    registerRequest.HTTPBody=[[NSString stringWithFormat:@"username=%@&password=%@",self.rusername, self.password2text.text] dataUsingEncoding:NSUTF8StringEncoding];
+        NSDictionary *parameters=@{@"username":self.rusername,
+                                   @"password":self.password2text.text
+        };
+        NSData *jsondata=[NSJSONSerialization dataWithJSONObject:parameters options:NSJSONWritingPrettyPrinted error:nil];
+        [registerRequest setValue:@"application/json"  forHTTPHeaderField:@"Content-type"];
+        [registerRequest setHTTPBody:jsondata];
+    
+    NSLog(@"username=%@&password=%@",self.rusername, self.password2text.text);
     //3、建立task
     NSURLSession *registerSession=[NSURLSession sharedSession];
     NSURLSessionDataTask *registerDatatask=[registerSession dataTaskWithRequest:registerRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        //NSLog(@"respond是%@",[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding]);
-        //NSString *result=[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+        
         NSDictionary *registerData=[NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-        NSLog(@"code:%@",registerData[@"code"]);
-        NSLog(@"message:%@",registerData[@"message"]);
+
         if([registerData[@"code"] intValue]==200) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                NSLog(@"username=%@&password=%@",self.rusername, self.password2text.text);
+                NSLog(@"username1=%@&password11=%@",self.rusername, self.password2text.text);
                 ViewController *loginVC=[[ViewController alloc]init];
                 [self.navigationController pushViewController:loginVC animated:YES];
             });
@@ -110,3 +115,4 @@
         }
 }
 @end
+

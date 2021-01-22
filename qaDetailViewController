@@ -34,7 +34,7 @@
     self.loadList=[[answerListLoad alloc]init];
     [self.loadList loadlistDataFinishWithBlock:^(BOOL success, NSArray<answerLoaditem *> * _Nonnull listArray) {
         __strong typeof(wself) strongSelf=wself;
-        strongSelf.dataArray=listArray;//此处已获得listArray中转换过来的title
+         strongSelf.dataArray=listArray;//此处已获得listArray中转换过来的title
         [strongSelf.detail reloadData];
     } answer:self.questionId];
 }

@@ -1,49 +1,106 @@
 #import "askQuestionViewController.h"
+#import "questionPlazaViewController.h"
+#import "loginMyPageViewController.h"
 
 @interface askQuestionViewController ()
-
+@property(nonatomic,strong) UITableView *mainQ;
+@property(nonatomic,strong) UITextField *textContent;
+@property(nonatomic,strong) UITextField *textTitle;
 @end
 
 @implementation askQuestionViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    UIScrollView *scrollview=[[UIScrollView alloc]initWithFrame:self.view.bounds];
-    scrollview.contentSize=CGSizeMake(self.view.bounds.size.width, self.view.bounds.size.height*1.5);
-    [self.view addSubview:scrollview];
-    UITableView *mainQ=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height*1.5) style:UITableViewStylePlain];
-    mainQ.separatorStyle=UITableViewCellSelectionStyleNone;
-
-    //mainQ.tableHeaderView=textQ;
-    UILabel *tip=[[UILabel alloc]initWithFrame:CGRectMake(5, 40.f, self.view.bounds.size.width-10, 40)];
+    self.view.backgroundColor=[UIColor whiteColor];
+    // Do any additional setup after loading the view
+    [self.view addSubview:({
+        self.mainQ=[[UITableView alloc]initWithFrame:CGRectMake(0, 200.f, self.view.bounds.size.width, self.view.bounds.size.height*1.5) style:UITableViewStylePlain];
+        self.mainQ.separatorStyle=UITableViewCellSelectionStyleNone;
+        //self.mainQ.tableHeaderView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 80.f)];
+        self.mainQ;
+    })];
+    
+    [self.view addSubview:({
+        self.textTitle=[[UITextField alloc]initWithFrame:CGRectMake(0, 100.f, self.view.bounds.size.width, 100.f)];
+         self.textTitle.placeholder=@"输入问题并以问号结尾";
+         self.textTitle.contentHorizontalAlignment=UIControlContentHorizontalAlignmentLeft;
+         self.textTitle.contentVerticalAlignment=UIControlContentVerticalAlignmentTop;
+         self.textTitle.keyboardType=UIKeyboardTypeDefault;
+         self.textTitle.autocapitalizationType=UITextAutocapitalizationTypeNone;
+         self.textTitle.backgroundColor=[UIColor lightGrayColor];
+         self.textTitle;
+    })];
+    
+    UILabel *tip=[[UILabel alloc]initWithFrame:CGRectMake(5, 0, self.view.bounds.size.width-10, 40)];
     tip.text=@"让你的第一个提问获得更多解答·保持文字简练·添加合适的话题";
     
-    UITextField *textAdd=[[UITextField alloc]initWithFrame:CGRectMake(0, 80, self.view.bounds.size.width, 200)];
-    textAdd.placeholder=@"对问题补充说明，可以更快获得解答（选填）";
-    [scrollview addSubview:mainQ];
-    [mainQ addSubview:tip];
-    [mainQ addSubview:textAdd];
+    [self.mainQ addSubview:({
+        self.textContent=[[UITextField alloc]initWithFrame:CGRectMake(0, 40.f, self.view.bounds.size.width, 200)];
+        self.textContent.placeholder=@"对问题补充说明，可以更快获得解答（选填）";
+        self.textContent;
+    })];
+    [self.mainQ addSubview:tip];
     
-    UITextField *textQ=[[UITextField alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 40.f)];
-    textQ.placeholder=@"请输入你的问题";
-    textQ.backgroundColor=[UIColor whiteColor];
-    [self.view addSubview:textQ];
+    //差一个以问号结尾的判断
+    self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"发布问题" style:UIBarButtonItemStylePlain target:self action:@selector(pushquestionPlaza)];
+  
 
 }
 
 - (UITableViewCell *)tableView:(UITableViewCell *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *tableViewCell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"id"];
-    tableViewCell.backgroundColor=[UIColor greenColor];
+    //tableViewCell.backgroundColor=[UIColor greenColor];
     return tableViewCell;
 }
-
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
         return 1;
     }
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 40;
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
 }
 
 
+
+-(void)pushquestionPlaza{//此处需同时向服务端发送post请求
+    NSURL *askUrl=[NSURL URLWithString:@"http://8.136.142.201:9090/question/add"];
+    NSMutableURLRequest *askRequest=[NSMutableURLRequest requestWithURL:askUrl];
+    askRequest.HTTPMethod=@"POST";
+    
+    NSUserDefaults *userdefault=[NSUserDefaults standardUserDefaults];
+    NSUserDefaults *userdefault1=[NSUserDefaults standardUserDefaults];
+    NSDictionary *parameters=@{@"content":self.textContent.text,
+                               @"title":self.textTitle.text,
+                               @"userId":[userdefault objectForKey:@"userId"]
+    };
+    
+    NSData *jsondata=[NSJSONSerialization dataWithJSONObject:parameters options:NSJSONWritingPrettyPrinted error:nil];
+    
+    [askRequest setValue:@"application/json"  forHTTPHeaderField:@"Content-type"];
+
+    [askRequest setValue:[NSString stringWithFormat:@"Bearer %@",[userdefault1 objectForKey:@"token"] ] forHTTPHeaderField:@"Authorization"];
+    [askRequest setHTTPBody:jsondata];
+    NSURLSession *askSession=[NSURLSession sharedSession];
+    NSURLSessionDataTask *askDataTask=[askSession dataTaskWithRequest:askRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSDictionary *registerData=[NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+
+            
+        questionPlazaViewController *viewController=[[questionPlazaViewController alloc] init];
+        UITabBarController *QP=[[UITabBarController alloc]init];
+        loginMyPageViewController *mPage=[[loginMyPageViewController alloc]init];
+        mPage.tabBarItem.title=@"我的";
+        [QP setViewControllers:@[viewController,mPage]];
+        QP.navigationItem.hidesBackButton=YES;
+        QP.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"我要提问" style:UIBarButtonItemStylePlain target:self action:@selector(askQuestionpushaskQ)];
+        [self.navigationController pushViewController:QP animated:YES];
+        });
+    }];
+    [askDataTask resume];
+}
+-(void)askQuestionpushaskQ{//跳转提出问题页面
+    //创建一个view控制器
+    askQuestionViewController *askQuestion=[[askQuestionViewController alloc] init];
+    [self.navigationController pushViewController:askQuestion animated:YES];
+}
 @end

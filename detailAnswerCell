@@ -1,0 +1,59 @@
+#import "detailAnswerCell.h"
+#import "qaDetailViewController.h"
+#import "answerLoaditem.h"
+
+@interface detailAnswerCell()
+@property(nonatomic,strong,readwrite) UIImageView *selfPhoto;
+@property(nonatomic,strong,readwrite) UILabel *nickName;
+@property(nonatomic,strong,readwrite) UILabel *selfDescribe;
+@property(nonatomic,strong,readwrite) UITextField *answer;
+@property(nonatomic,strong,readwrite) UILabel *good;
+
+
+@end
+@implementation detailAnswerCell
+
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(nullable NSString *)reuseIdentifier{
+    self=[super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if(self){
+        [self.contentView addSubview:({
+            self.selfPhoto=[[UIImageView alloc]initWithFrame:CGRectMake(10.f, 5.f, 40.f, 40.f)];
+            self.selfPhoto.backgroundColor=[UIColor grayColor];
+            self.selfPhoto;
+        })];
+        
+        [self.contentView addSubview:({
+            self.nickName=[[UILabel alloc]initWithFrame:CGRectMake(50.f, 5.f, self.contentView.bounds.size.width, 20.f)];
+            self.nickName.font=[UIFont boldSystemFontOfSize:15.f];
+            self.nickName;
+        })];
+        
+        [self.contentView addSubview:({
+            self.selfDescribe=[[UILabel alloc]initWithFrame:CGRectMake(50.f, 25.f, self.contentView.bounds.size.width, 20.f)];
+            self.selfDescribe.font=[UIFont boldSystemFontOfSize:15.f];
+            self.selfDescribe;
+        })];
+        
+        [self.contentView addSubview:({
+            self.answer=[[UITextField alloc]initWithFrame:CGRectMake(10.f, 50.f, self.contentView.bounds.size.width+45, 600.f)];
+            self.answer.backgroundColor=[UIColor purpleColor];
+            self.answer.userInteractionEnabled=NO;
+            self.answer.contentHorizontalAlignment=UIControlContentHorizontalAlignmentLeft;
+            self.answer.contentVerticalAlignment=UIControlContentVerticalAlignmentTop;
+            self.answer;
+        })];
+        
+    }
+    return self;
+}
+
+-(void)viewDidLayoutSubviews{
+   [self.answer sizeToFit];
+}
+
+-(void)layoutTableviewCellwithItem:(answerLoaditem *)listArray{
+    self.nickName.text=listArray.answerNickname;
+    self.answer.text=listArray.content;
+}
+
+@end

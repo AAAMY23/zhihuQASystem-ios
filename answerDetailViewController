@@ -124,7 +124,7 @@
 
     NSURLSession *deleteAnswerSession=[NSURLSession sharedSession];
     NSURLSessionDataTask *deleteAnswerDataTask=[deleteAnswerSession dataTaskWithRequest:deleteAnswerRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        dispatch_async(dispatch_get_main_queue(), ^{
+         dispatch_async(dispatch_get_main_queue(), ^{
             NSDictionary *deleteAnswerData=[NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
             NSLog(@"deletecode:%@",deleteAnswerData[@"code"]);
             NSLog(@"deletemessage:%@",deleteAnswerData[@"message"]);

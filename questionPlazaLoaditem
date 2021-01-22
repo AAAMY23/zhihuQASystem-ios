@@ -1,0 +1,24 @@
+#import "questionPlazaLoaditem.h"
+
+@implementation questionPlazaLoaditem
+
+-(void)configWithDictonary:(NSDictionary *)dictonary{
+    self.questionId=[dictonary objectForKey:@"id"];
+    self.title=[dictonary objectForKey:@"title"];
+    self.questionContent=[dictonary objectForKey:@"content"];
+    self.answerCount=[dictonary objectForKey:@"answerCount"];
+    self.userId=[dictonary objectForKey:@"userId"];
+    
+    self.questionCreator=[dictonary objectForKey:@"creator"];
+    self.questionCreatorId=[self.questionCreator objectForKey:@"userId"];
+    self.questionNickname=[self.questionCreator objectForKey:@"nickname"];
+    
+    self.bestAnswer=[dictonary objectForKey:@"bestAnswer"];
+    self.answerContent=[self.bestAnswer objectForKey:@"content"];
+    self.answerCreator=[self.bestAnswer objectForKey:@"creator"];
+    self.answerNickname=[self.answerCreator objectForKey:@"nickname"];
+    
+    
+
+}
+@end

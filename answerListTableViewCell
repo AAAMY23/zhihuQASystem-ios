@@ -1,0 +1,59 @@
+#import "answerListTableViewCell.h"
+#import "answerListLoad.h"
+#import "answerLoaditem.h"
+
+@interface answerListTableViewCell()
+@property(nonatomic,strong,readwrite) UIImageView *selfPhoto;
+@property(nonatomic,strong,readwrite) UILabel *nickName;
+@property(nonatomic,strong,readwrite) UILabel *selfDescribe;
+@property(nonatomic,strong,readwrite) UILabel *answer;
+@property(nonatomic,strong,readwrite) UILabel *good;
+
+
+@end
+
+@implementation answerListTableViewCell
+
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(nullable NSString *)reuseIdentifier{
+    self=[super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if(self){
+        [self.contentView addSubview:({
+            self.selfPhoto=[[UIImageView alloc]initWithFrame:CGRectMake(5, 5.f, 40.f, 40.f)];
+            self.selfPhoto.backgroundColor=[UIColor grayColor];
+            self.selfPhoto;
+        })];
+        
+        [self.contentView addSubview:({
+            self.nickName=[[UILabel alloc]initWithFrame:CGRectMake(50.f, 5.f, self.contentView.bounds.size.width, 20.f)];
+            self.nickName.font=[UIFont boldSystemFontOfSize:15.f];
+            self.nickName;
+        })];
+        
+        [self.contentView addSubview:({
+            self.selfDescribe=[[UILabel alloc]initWithFrame:CGRectMake(50.f, 25.f, self.contentView.bounds.size.width, 20.f)];
+            self.selfDescribe.font=[UIFont boldSystemFontOfSize:15.f];
+            self.selfDescribe;
+        })];
+        
+        [self.contentView addSubview:({
+            self.answer=[[UILabel alloc]initWithFrame:CGRectMake(5.f, 50.f, self.contentView.bounds.size.width+45, 100.f)];
+            self.answer.numberOfLines=0;
+            self.answer;
+        })];
+        
+    }
+    return self;
+}
+-(void)layoutTableviewCellwithItem:(answerLoaditem
+                                    *)listArray{
+    self.selfPhoto.image=[UIImage imageNamed:@"xixi.jpg"];
+    self.nickName.text=listArray.answerNickname;
+    self.selfDescribe.text=@"干饭猫";
+    self.answer.text=listArray.content;
+    self.selfDescribe.text=@"干饭猫";
+    self.userId=listArray.answerUserId;
+    self.answerContent=listArray.content;
+    self.answerId=listArray.answerId;
+    self.answerCreaterId=listArray.answerUserId;
+}
+@end

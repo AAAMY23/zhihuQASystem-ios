@@ -1,9 +1,12 @@
 #import "AppDelegate.h"
 #import "questionPlazaViewController.h"
 #import "myPageViewController.h"
+#import "loginMyPageViewController.h"
+#import "askQuestionViewController.h"
 
 @interface AppDelegate ()
-
+@property(nonatomic,strong) NSUserDefaults *userdefault;
+@property(nonatomic,strong) UINavigationController *navigationcontroller1;
 @end
 
 @implementation AppDelegate
@@ -12,19 +15,33 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
     self.window=[[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
-    UITabBarController *tabbarController=[[UITabBarController alloc]init];
     
     questionPlazaViewController *viewController=[[questionPlazaViewController alloc]init];
         
     myPageViewController *controller2=[[myPageViewController alloc]init];
+    loginMyPageViewController *controller3=[[loginMyPageViewController alloc]init];
     
+
+    UITabBarController *tabbarController=[[UITabBarController alloc]init];
+    self.navigationcontroller1=[[UINavigationController alloc]initWithRootViewController:tabbarController];
+
+    self.userdefault=[NSUserDefaults standardUserDefaults];
+    if([self.userdefault objectForKey:@"userId"]){
+   [tabbarController setViewControllers:@[viewController,controller3]];
+    tabbarController.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"我要提问" style:UIBarButtonItemStylePlain target:self action:@selector(askQuestionpushaskQ)];
+    }
+    else
     
     [tabbarController setViewControllers:@[viewController,controller2]];
-    UINavigationController *navigationcontroller=[[UINavigationController alloc]initWithRootViewController:tabbarController];
-    //navigationcontroller.navigationBar.topItem.title=@"欢迎来到知乎";
-    self.window.rootViewController=navigationcontroller;
+
+    self.window.rootViewController=self.navigationcontroller1;
     [self.window makeKeyAndVisible];
     return YES;
+}
+-(void)askQuestionpushaskQ{//跳转提出问题页面
+    //创建一个view控制器
+    askQuestionViewController *askQuestion=[[askQuestionViewController alloc] init];
+    [self.navigationcontroller1 pushViewController:askQuestion animated:YES];
 }
 
 @end

@@ -1,0 +1,87 @@
+#import "updateQuestionViewController1.h"
+#import "questionPlazaViewController.h"
+#import "loginMyPageViewController.h"
+#import "qaDetailViewController.h"
+
+@interface updateQuestionViewController1 ()
+@property(nonatomic,strong) UITableView *mainQ;
+@property(nonatomic,strong) UITextField *textTitle;
+@property(nonatomic,strong) UITextField *textContent;
+@end
+
+@implementation updateQuestionViewController1
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    [self.view addSubview:({
+        self.mainQ=[[UITableView alloc]initWithFrame:CGRectMake(0, 200.f, self.view.bounds.size.width, self.view.bounds.size.height*1.5) style:UITableViewStylePlain];
+        self.mainQ.separatorStyle=UITableViewCellSelectionStyleNone;
+        self.mainQ;
+    })];
+    
+    [self.view addSubview:({
+        self.textTitle=[[UITextField alloc]initWithFrame:CGRectMake(0, 100.f, self.view.bounds.size.width, 100.f)];
+        self.textTitle.placeholder=@"    ";
+        self.textTitle.text=self.questionTitle;
+         self.textTitle.contentHorizontalAlignment=UIControlContentHorizontalAlignmentLeft;
+         self.textTitle.contentVerticalAlignment=UIControlContentVerticalAlignmentTop;
+         self.textTitle.keyboardType=UIKeyboardTypeDefault;
+         self.textTitle.autocapitalizationType=UITextAutocapitalizationTypeNone;
+         self.textTitle.backgroundColor=[UIColor lightGrayColor];
+         self.textTitle;
+    })];
+    
+    [self.mainQ addSubview:({
+        self.textContent=[[UITextField alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 200)];
+        self.textContent.text=self.questionContent;
+        
+        if(self.questionContent.length>0)
+            self.textContent.placeholder=@"";
+        else
+            self.textContent.placeholder=@"对问题补充说明，可以更快获得解答（选填）";
+        self.textContent;
+    })];
+    
+    self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"修改问题" style:UIBarButtonItemStylePlain target:self action:@selector(pushquestionPlaza)];
+}
+
+-(void)pushquestionPlaza{//此处需同时向服务端发送post请求
+    NSURL *askUrl=[NSURL URLWithString:@"http://8.136.142.201:9090/question/update"];
+    NSMutableURLRequest *askRequest=[NSMutableURLRequest requestWithURL:askUrl];
+    askRequest.HTTPMethod=@"POST";
+    
+    NSUserDefaults *userdefault=[NSUserDefaults standardUserDefaults];
+    NSUserDefaults *userdefault1=[NSUserDefaults standardUserDefaults];
+    NSDictionary *parameters=@{@"id":self.questionId,
+                               @"content":self.textContent.text,
+                               @"title":self.textTitle.text,
+                               @"userId":[userdefault objectForKey:@"userId"]
+    };
+    
+    NSData *jsondata=[NSJSONSerialization dataWithJSONObject:parameters options:NSJSONWritingPrettyPrinted error:nil];
+    
+    [askRequest setValue:@"application/json"  forHTTPHeaderField:@"Content-type"];
+
+    [askRequest setValue:[NSString stringWithFormat:@"Bearer %@",[userdefault1 objectForKey:@"token"] ] forHTTPHeaderField:@"Authorization"];
+    [askRequest setHTTPBody:jsondata];
+   
+    NSURLSession *askSession=[NSURLSession sharedSession];
+    NSURLSessionDataTask *askDataTask=[askSession dataTaskWithRequest:askRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSDictionary *updateQuestionData=[NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+            NSLog(@"updateQuestioncode:%@",updateQuestionData[@"code"]);
+            NSLog(@"updateQuestionmessage:%@",updateQuestionData[@"message"]);
+            
+            qaDetailViewController *qaDetailvc=[[qaDetailViewController alloc]init];
+            qaDetailvc.questionTitle=self.questionTitle;
+            qaDetailvc.questionId=self.questionId;
+            [self.navigationController pushViewController:qaDetailvc animated:YES];
+            
+        });             
+    }];
+    [askDataTask resume];
+     
+}
+
+@end

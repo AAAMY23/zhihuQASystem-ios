@@ -1,6 +1,5 @@
 #import "registerViewController.h"
 #import "registerstep2ViewController.h"
-#import "MBProgressHUD.h"
 
 @interface registerViewController ()
 @property(nonatomic,strong) UILabel *reglable;
@@ -53,6 +52,8 @@
 -(void)pushtoRegisterpassword{
     //1、确定请求路径
     NSURL *registerUrl=[NSURL URLWithString:[NSString stringWithFormat:@"http://8.136.142.201:9090/user/validate?username=%@",self.rusernameTextfield.text] ];
+    //NSURL *registerUrl=[NSURL URLWithString:[NSString stringWithFormat:@"http://localhost:7300/mock/5fdb1c7704327c25742b1dff/zhihuQA-B/user/validate?username=%@",self.rusernameTextfield.text] ];
+    //http://8.136.142.201:9090/user/validate?username=%@
     //2、创建请求对象
     NSURLRequest *registerRequest=[NSURLRequest requestWithURL:registerUrl];
     //3、建立task
@@ -61,8 +62,8 @@
         //NSLog(@"respond是%@",[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding]);
         //NSString *result=[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
         NSDictionary *registerData=[NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-        NSLog(@"code:%@",registerData[@"code"]);
-        NSLog(@"message:%@",registerData[@"message"]);
+        //NSLog(@"code:%@",registerData[@"code"]);
+        //NSLog(@"message:%@",registerData[@"message"]);
         if([registerData[@"code"] intValue]==1002){
             dispatch_async(dispatch_get_main_queue(), ^{
             UILabel *repeatusername=[[UILabel alloc]initWithFrame:CGRectMake(100.f, 450.f, 100.f, 80.f)];

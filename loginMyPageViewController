@@ -1,0 +1,66 @@
+#import "loginMyPageViewController.h"
+
+@interface loginMyPageViewController ()
+@property(nonatomic,strong) UIScrollView *scrollview;
+@property(nonatomic,strong) UIImageView *myPhoto;
+@property(nonatomic,strong) UILabel *nickName;
+@property(nonatomic,strong) UILabel *selfDescribe;
+@property(nonatomic,strong) UIButton *answerBnt;
+@property(nonatomic,strong) UIButton *questionBnt;
+@end
+
+@implementation loginMyPageViewController
+- (instancetype)init{
+    self=[super init];
+    if(self){
+    self.tabBarItem.title=@"我的";
+    }
+    return  self;
+}
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    [self.view addSubview:({
+        self.scrollview=[[UIScrollView alloc]initWithFrame:self.view.bounds];
+        self.scrollview.backgroundColor=[UIColor whiteColor];
+        self.scrollview.contentSize=CGSizeMake(self.view.bounds.size.width, self.view.bounds.size.height*1.5);
+        
+        self.scrollview;
+    })];
+    
+    
+    [self.scrollview addSubview:({
+        self.myPhoto=[[UIImageView alloc]initWithFrame:CGRectMake(20.f, 110.f, 50.f, 50.f)];
+        self.myPhoto.backgroundColor=[UIColor redColor];
+        self.myPhoto;
+    })];
+    
+    [self.scrollview addSubview:({
+        self.nickName=[[UILabel alloc]initWithFrame:CGRectMake(20.f, 170.f, 50.f, 50.f)];
+        self.nickName.text=@"昵称";
+        self.nickName;
+    })];
+    
+    [self.scrollview addSubview:({
+        self.selfDescribe=[[UILabel alloc]initWithFrame:CGRectMake(20.f, 220.f, 100.f, 50.f)];
+        self.selfDescribe.text=@"自我介绍";
+        self.selfDescribe;
+    })];
+    
+    [self.scrollview addSubview:({
+        self.answerBnt=[[UIButton alloc]initWithFrame:CGRectMake( 20.f, 320.f, self.view.bounds.size.width/2-20, 50.f)];
+        [self.answerBnt setTitle:@"已回答问题 7" forState:UIControlStateNormal];
+        [self.answerBnt setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        self.answerBnt;
+    })];
+    [self.scrollview addSubview:({
+        self.questionBnt=[[UIButton alloc]initWithFrame:CGRectMake(self.view.bounds.size.width, 320.f, self.view.bounds.size.width-20, 50.f)];
+        [self.questionBnt setTitle:@"已提出问题 5" forState:UIControlStateNormal];
+        self.questionBnt;
+    })];
+    
+}
+
+
+
+@end

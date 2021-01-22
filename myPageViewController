@@ -9,8 +9,8 @@
 - (instancetype)init{
     self=[super init];
     if(self){
-    //self.view.backgroundColor=[UIColor yellowColor];
     self.tabBarItem.title=@"未登录";
+        
     }
     return  self;
 }
@@ -35,7 +35,6 @@
     UIButton *askButton=[UIButton buttonWithType:UIButtonTypeCustom];
     askButton.frame=CGRectMake(40.f, 200.f, self.view.bounds.size.width-80, 40.f);
     askButton.backgroundColor=[UIColor colorWithRed:64/255.0 green:146/255.0 blue:238/255.0 alpha:1.0];
-    //[askButton setImage:[UIImage imageNamed:@"timeline_icon_add_friends"] forState:UIControlStateNormal];
     [askButton setTitle:@"登录" forState:UIControlStateNormal];
     askButton.titleLabel.textColor=[UIColor blackColor];
     [self.view addSubview:askButton];
@@ -57,7 +56,6 @@
 -(void)pushController{//push一个viewcontroller 使之达到页面切换的效果
     //创建一个view控制器
     ViewController *viewController=[[ViewController alloc] init];
-
     [self.navigationController pushViewController:viewController animated:YES];
 }
 

@@ -5,11 +5,8 @@
 #import "askQuestionViewController.h"
 #import "loginMyPageViewController.h"
 #import "registerViewController.h"
-#import "MBProgressHUD.h"
 
 @interface ViewController ()<NSURLSessionDelegate,UITextFieldDelegate>
-//weak和strong的意思是强弱指针
-//@property (nonatomic,weak) UILabel *lable;
 @property(nonatomic,strong) UITextField *usernameTextfield;
 @property(nonatomic,strong) UITextField *passwordTextfield1;
 @property(nonatomic,strong) UIButton *button;
@@ -33,7 +30,6 @@
     self.view.backgroundColor=[UIColor whiteColor];
     UIButton *deleteButton=[[UIButton alloc]init];
     deleteButton.frame=CGRectMake(22.f, 66.f, 18.f, 18.f);
-    [deleteButton setImage:[UIImage imageNamed:@"titlebar_close"] forState:UIControlStateNormal];
     [self.view addSubview:deleteButton];
     [deleteButton addTarget:self action:@selector(deleteButtonClick) forControlEvents:UIControlEventTouchUpInside];
     
@@ -44,11 +40,9 @@
     //CGRectMake就是用来确定在坐标轴中的位置以及尺寸的
     lable.frame=CGRectMake(40.f, 129.f, 200.f, 100.f);
     lable.text=@"密码登录";
-    //lable.textColor=[UIColor blackColor];
     //文本对齐方式
     lable.textAlignment=NSTextAlignmentLeft;
     //文本大小 加粗
-    //lable.font=[UIFont systemFontOfSize:30.f];
     lable.font=[UIFont boldSystemFontOfSize:25.f];
     [self.view addSubview:lable];
     [self.view addSubview:({
@@ -85,8 +79,6 @@
     [self.passwordTextfield1.layer addSublayer:bottomLine1];
     [self.passwordTextfield1 addTarget:self action:@selector(textchange) forControlEvents:UIControlEventEditingChanged];
     
-    //[usernameTextfield addTarget:self action:@selector(textFieldChange: and:and:) forControlEvents:UIControlEventEditingChanged];
-    //[passwordTextfield1 addTarget:self action:@selector(textFieldChange:and:and:) forControlEvents:UIControlEventEditingChanged];
     [self.view addSubview:({
         self.button=[[UIButton alloc]initWithFrame:CGRectMake(40.f, 350.f, 301.f, 40.f)];
         self.button.backgroundColor=[UIColor colorWithRed:186/255.0 green:217/255.0 blue:251/255.0 alpha:1.0];
@@ -97,7 +89,6 @@
     [self.button setBackgroundImage:[UIImage imageNamed:@"可操作"] forState:UIControlStateHighlighted];
     [self.button setBackgroundImage:[UIImage imageNamed:@"bukecaozuo"] forState:UIControlStateNormal];
     
-    //[self.button setTitle:@"可登录" forState:UIControlStateHighlighted];
     [self.button addTarget:self action:@selector(pushController) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:({
@@ -110,14 +101,11 @@
     
 }
     
-    /*UILabel *lable2=[[UILabel alloc]init];
     lable2.frame=CGRectMake(40.f, 440.f, 301.f, 40.f);
     lable2.text=@"未注册邮箱验证后自动登录，注册即代表同意《知乎协议》《隐私保护指引》";
     lable2.font=[UIFont systemFontOfSize:12.f];
     lable2.numberOfLines=0;
     [self.view addSubview:lable2];*/
-    //UISwitch *sw=[[UISwitch alloc]init];
-    //[self.view addSubview:sw];
 
 -(void)pushController{//成功登录 跳转问题广场
 /*GET:
@@ -127,34 +115,43 @@
     //1、确定请求路径
     NSURL *loginUrl=[NSURL URLWithString:@"http://8.136.142.201:9090/user/login"];
     //2、创建请求对象
-    //GET方法:NSURLRequest *loginRequest=[NSURLRequest requestWithURL:loginUrl];
     NSMutableURLRequest *loginRequest=[NSMutableURLRequest requestWithURL:loginUrl];
     //3、POST专有 修改请求方法 默认是GET
     loginRequest.HTTPMethod=@"POST";
     //4、POST专有设置请求体信息 GET方法已包含在url中了
-    loginRequest.HTTPBody=[[NSString stringWithFormat:@"username=%@&password=%@" ,self.usernameTextfield.text,self.passwordTextfield1.text] dataUsingEncoding:NSUTF8StringEncoding];
-
-    //[loginRequest setValue:(@"Bearer %@",localsrorage)forHTTPHeaderField:@"Authorization"];
+    NSDictionary *parameters=@{@"username":self.usernameTextfield.text,
+                               @"password":self.passwordTextfield1.text
+    };
+    NSData *jsondata=[NSJSONSerialization dataWithJSONObject:parameters options:NSJSONWritingPrettyPrinted error:nil];
+    [loginRequest setValue:@"application/json"  forHTTPHeaderField:@"Content-type"];
+    [loginRequest setHTTPBody:jsondata];
+   
     //5、创建task  data：响应体 response：响应头 error：错误代码
     NSURLSession *loginSession=[NSURLSession sharedSession];
     NSURLSessionDataTask *loginDatatask=[loginSession dataTaskWithRequest:loginRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        //NSLog(@"respond是%@",[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding]);
+
         NSDictionary *loginData=[NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+        NSDictionary *userID1=loginData[@"data"];
+        NSLog(@"userID1=%@",userID1[@"userId"]);
+        NSLog(@"token=%@",loginData[@"token"]);
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            //if([self.usernameTextfield.text isEqualToString:@"1234567890"]){
-            NSLog(@"username=%@&password=%@" ,self.usernameTextfield.text,self.passwordTextfield1.text);
               if([loginData[@"code"] intValue]==200) {
-                NSLog(@"code:%@",loginData[@"code"]);
-                NSLog(@"message:%@",loginData[@"message"]);
+                [self saveUserId:userID1[@"userId"]];
+                [self saveToken:loginData[@"token"]];
                 questionPlazaViewController *viewController=[[questionPlazaViewController alloc] init];
+                
                 UITabBarController *QP=[[UITabBarController alloc]init];
                 loginMyPageViewController *mPage=[[loginMyPageViewController alloc]init];
-                mPage.tabBarItem.title=@"我的";
+
                 [QP setViewControllers:@[viewController,mPage]];
+                
                 QP.navigationItem.hidesBackButton=YES;
-                QP.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"homeicon_tab"] style:UIBarButtonItemStylePlain target:self action:@selector(askQuestionpushaskQ)];
-                [self.navigationController pushViewController:QP animated:YES];
+                
+                QP.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"我要提问" style:UIBarButtonItemStylePlain target:self action:@selector(askQuestionpushaskQ)];
+                
+                  [self.navigationController pushViewController:QP animated:YES];
+                  //应该是每次问题广场要显示出来的时候 都会自动刷新页面
                   
               }
               else if([loginData[@"code"] intValue]==1003){
@@ -175,31 +172,34 @@
                   wrongpasswordusername.backgroundColor=[UIColor blackColor];
                 [self.view addSubview:wrongpasswordusername];
                 return;}
-           // }
     });
     }];
     //6、执行task
     [loginDatatask resume];
 }
+//将用户id保存到偏好设置中
+-(void)saveUserId :(NSString *)userid{
+    NSUserDefaults *userdefault=[NSUserDefaults standardUserDefaults];
+    //uesrid的值来自于response
+    [userdefault setObject:userid forKey:@"userId"];
+    [userdefault synchronize];
+}
 
-/*
- self.usernameTextfield.text isEqualToString:@"1234567890"]&&
-else{
-    UILabel *wronguser=[[UILabel alloc]initWithFrame:CGRectMake(150.f, 220.f, 200.f, 40.f)];
-    wronguser.text=@"请输入正确的手机号";
-    wronguser.textColor=[UIColor redColor];
-    [self.view addSubview:wronguser];}*/
+-(void)saveToken :(NSString *)token{
+    NSUserDefaults *userdefault1=[NSUserDefaults standardUserDefaults];
+    //uesrid的值来自于response
+    [userdefault1 setObject:token forKey:@"token"];
+    [userdefault1 synchronize];
+}
+ 
 -(void)askQuestionpushaskQ{//跳转提出问题页面
     //创建一个view控制器
     askQuestionViewController *askQuestion=[[askQuestionViewController alloc] init];
-
     [self.navigationController pushViewController:askQuestion animated:YES];
     //[self.navigationController presentViewController:askQuestion animated:YES completion:nil];
 }
 
 -(void)textchange{//验证登录名和密码不能为空
-    //NSLog(@"userchange:%@",self.usernameTextfield.text);
-    //NSLog(@"passchange:%@",self.passwordTextfield1.text);
     if(self.usernameTextfield.text.length&&self.passwordTextfield1.text.length){
         self.button.enabled=YES;
         self.button.highlighted=YES;
@@ -213,6 +213,7 @@ else{
 -(void)pushtoRegister{//跳转注册页面
 
     registerViewController *registerVC=[[registerViewController alloc] init];
+    //[self.navigationController presentViewController:registerVC animated:YES completion:nil];
     [self.navigationController pushViewController:registerVC animated:YES];
 }
 

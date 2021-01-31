@@ -1,0 +1,204 @@
+{
+  "templates": [
+    {
+      "id": "default",
+      "preview_icon": "default",
+      "background": {
+        "type": "solid",
+        "color": "#ffffff"
+      },
+      "body": {
+        "id": "card",
+        "quote_icon": {
+          "visible": true,
+          "color": "#66d3d3d3"
+        },
+        "content": {
+          "color": "#1a1a1a"
+        },
+        "description": {
+          "color": "#808080"
+        },
+        "footer": {
+          "color": "#999999",
+          "line_color": "#EBEBEB"
+        }
+      },
+      "qrcode": {
+        "color": "#444444",
+        "background_color": "#ffffff",
+        "desc_content": "长按识别二维码\n阅读全文",
+        "desc_color": "#cc999999",
+        "visible": true
+      },
+      "logo": {
+        "visible": true,
+        "color": "#0f88eb"
+      }
+    },
+    {
+      "id": "gold",
+      "preview_icon": "gold",
+      "background": {
+        "type": "gradient",
+        "colors": [
+          "#303030",
+          "#3e3c3c"
+        ],
+        "start_point": "0.5,0",
+        "end_point": "0.5,1"
+      },
+      "body": {
+        "id": "card",
+        "quote_icon": {
+          "visible": true,
+          "color": "#66d2b495"
+        },
+        "content": {
+          "color": "#d2b495"
+        },
+        "description": {
+          "color": "#d2b495"
+        },
+        "footer": {
+          "color": "#ccd2b495",
+          "line_color": "#66D2B495"
+        }
+      },
+      "qrcode": {
+        "color": "#d2b495",
+        "background_color": "#3e3c3c",
+        "desc_content": "长按识别二维码\n阅读全文",
+        "desc_color": "#ccd2b495",
+        "visible": true
+      },
+      "logo": {
+        "visible": true,
+        "color": "#cc8e8e8e"
+      }
+    },
+    {
+      "id": "purple",
+      "preview_icon": "purple",
+      "background": {
+        "type": "gradient",
+        "colors": [
+          "#353a72",
+          "#515e9f"
+        ],
+        "start_point": "0.5,0",
+        "end_point": "0.5,1"
+      },
+      "body": {
+        "id": "card",
+        "quote_icon": {
+          "visible": true,
+          "color": "#66ffffff"
+        },
+        "content": {
+          "color": "#ffffff"
+        },
+        "description": {
+          "color": "#ffffff"
+        },
+        "footer": {
+          "color": "#ccffffff",
+          "line_color": "#66ebebeb"
+        }
+      },
+      "qrcode": {
+        "color": "#ffffff",
+        "background_color": "#515e9f",
+        "desc_content": "长按识别二维码\n阅读全文",
+        "desc_color": "#ccffffff",
+        "visible": true
+      },
+      "logo": {
+        "visible": true,
+        "color": "#ccffffff"
+      }
+    },
+    {
+      "id": "blue",
+      "preview_icon": "blue",
+      "background": {
+        "type": "gradient",
+        "colors": [
+          "#6386e8",
+          "#69a9ea"
+        ],
+        "start_point": "0.5,0",
+        "end_point": "0.5,1"
+      },
+      "body": {
+        "id": "card",
+        "quote_icon": {
+          "visible": true,
+          "color": "#66ffffff"
+        },
+        "content": {
+          "color": "#ffffff"
+        },
+        "description": {
+          "color": "#ffffff"
+        },
+        "footer": {
+          "color": "#ccffffff",
+          "line_color": "#66ebebeb"
+        }
+      },
+      "qrcode": {
+        "color": "#ffffff",
+        "background_color": "#69a9ea",
+        "desc_content": "长按识别二维码\n阅读全文",
+        "desc_color": "#ccffffff",
+        "visible": true
+      },
+      "logo": {
+        "visible": true,
+        "color": "#ccffffff"
+      }
+    },
+    {
+      "id": "green",
+      "preview_icon": "green",
+      "background": {
+        "type": "gradient",
+        "colors": [
+          "#05aac6",
+          "#43cdc8"
+        ],
+        "start_point": "0.5,0",
+        "end_point": "0.5,1"
+      },
+      "body": {
+        "id": "card",
+        "quote_icon": {
+          "visible": true,
+          "color": "#66ffffff"
+        },
+        "content": {
+          "color": "#ffffff"
+        },
+        "description": {
+          "color": "#ffffff"
+        },
+        "footer": {
+          "color": "#ccffffff",
+          "line_color": "#66ebebeb"
+        }
+      },
+      "qrcode": {
+        "color": "#ffffff",
+        "background_color": "#43cdc8",
+        "desc_content": "长按识别二维码\n阅读全文",
+        "desc_color": "#ccffffff",
+        "visible": true
+      },
+      "logo": {
+        "visible": true,
+        "color": "#ccffffff"
+      }
+    }
+  ]
+}

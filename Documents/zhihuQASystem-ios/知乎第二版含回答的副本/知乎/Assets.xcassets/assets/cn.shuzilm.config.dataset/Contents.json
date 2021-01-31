@@ -1,0 +1,12 @@
+{
+  "data" : [
+    {
+      "filename" : "cn.shuzilm.config.json",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "easyGoVersion": "1.0",
+  "client": "com.zhihu.android",
+  "logicEntities": [
+    {
+      "head": {
+        "function": "magicwindow",
+        "required": "true"
+      },
+      "body": {
+        "mode": "1",
+        "activityPairs": [
+          {
+            "from":"com.zhihu.android.app.ui.activity.HostActivity",
+            "to":"*"
+          },
+          {
+            "from":"com.zhihu.android.app.ui.activity.MainActivity",
+            "to":"*"
+          }
+        ],
+        "Activities":[
+          {
+            "name": "com.zhihu.android.app.ebook.activity.EBookHostActivity",
+            "defaultFullScreen": "true"
+          }],
+        "transActivities": [],
+        "UX": {
+          "supportRotationUxCompat": "false",
+          "isDraggable": "true"
+        }
+      }
+    }
+  ]
+}
+

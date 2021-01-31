@@ -1,0 +1,12 @@
+{
+  "data" : [
+    {
+      "filename" : "android.js",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

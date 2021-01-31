@@ -1,0 +1,12 @@
+{
+  "data" : [
+    {
+      "filename" : "com.alibaba.sdk.android.ams.common.spi.FactoryProvider",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

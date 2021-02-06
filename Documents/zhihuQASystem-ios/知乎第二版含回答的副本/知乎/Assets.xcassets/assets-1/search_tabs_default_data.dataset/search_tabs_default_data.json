@@ -1,0 +1,59 @@
+{
+  "data": [
+    {
+      "t": "general",
+      "title": "综合",
+      "hybrid": "https://www.zhihu.com/appview/search/general"
+    },
+    {
+      "t": "recent",
+      "title": "近一周",
+      "hybrid": "https://www.zhihu.com/appview/search/recent"
+    },
+    {
+      "t": "people",
+      "title": "用户",
+      "hybrid": "https://www.zhihu.com/appview/search/people"
+    },
+    {
+      "t": "topic",
+      "title": "话题",
+      "hybrid": "https://www.zhihu.com/appview/search/topic"
+    },
+    {
+      "t": "album",
+      "title": "盐选专栏",
+      "hybrid": "https://www.zhihu.com/appview/search/album"
+    },
+    {
+      "t": "live",
+      "title": "Live 讲座",
+      "hybrid": "https://www.zhihu.com/appview/search/live"
+    },
+    {
+      "t": "publication",
+      "title": "电子书",
+      "hybrid": "https://www.zhihu.com/appview/search/publication"
+    },
+    {
+      "t": "zvideo",
+      "title": "视频",
+      "hybrid": "https://www.zhihu.com/appview/search/zvideo"
+    },
+    {
+      "t": "column",
+      "title": "专栏",
+      "hybrid": "https://www.zhihu.com/appview/search/column"
+    },
+    {
+      "t": "pin",
+      "title": "想法",
+      "hybrid": "https://www.zhihu.com/appview/search/pin"
+    },
+    {
+      "t": "favlist",
+      "title": "我的",
+      "hybrid": "https://www.zhihu.com/appview/search/favlist"
+    }
+  ]
+}

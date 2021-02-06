@@ -1,0 +1,12 @@
+{
+  "data" : [
+    {
+      "filename" : "anim_open_push_guide.json",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

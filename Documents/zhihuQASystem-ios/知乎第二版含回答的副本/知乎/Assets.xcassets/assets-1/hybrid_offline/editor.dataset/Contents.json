@@ -1,0 +1,12 @@
+{
+  "data" : [
+    {
+      "filename" : "editor.tar",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

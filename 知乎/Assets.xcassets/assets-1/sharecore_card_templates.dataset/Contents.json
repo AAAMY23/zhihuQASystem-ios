@@ -1,0 +1,12 @@
+{
+  "data" : [
+    {
+      "filename" : "sharecore_card_templates.json",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

@@ -1,0 +1,267 @@
+{
+  "data": [
+    {
+      "name": "选择感兴趣的娱乐方式",
+      "icon": "",
+      "sub_groups": [
+        {
+          "tags": [
+            {
+              "id": 1,
+              "tag_type": 1,
+              "tag": "电影",
+              "description": ""
+            },
+            {
+              "id": 2,
+              "tag_type": 1,
+              "tag": "电视剧",
+              "description": ""
+            },
+            {
+              "id": 13,
+              "tag_type": 1,
+              "tag": "综艺",
+              "description": ""
+            },
+            {
+              "id": 165,
+              "tag_type": 1,
+              "tag": "音乐",
+              "description": ""
+            },
+            {
+              "id": 146,
+              "tag_type": 1,
+              "tag": "动漫",
+              "description": ""
+            },
+            {
+              "id": 297,
+              "tag_type": 1,
+              "tag": "游戏",
+              "description": ""
+            },
+            {
+              "id": 195,
+              "tag_type": 1,
+              "tag": "阅读",
+              "description": ""
+            },
+            {
+              "id": 345,
+              "tag_type": 1,
+              "tag": "美食",
+              "description": ""
+            },
+            {
+              "id": 56,
+              "tag_type": 1,
+              "tag": "摄影",
+              "description": ""
+            },
+            {
+              "id": 118,
+              "tag_type": 1,
+              "tag": "旅行",
+              "description": ""
+            },
+            {
+              "id": 125,
+              "tag_type": 1,
+              "tag": "足球",
+              "description": ""
+            },
+            {
+              "id": 324,
+              "tag_type": 1,
+              "tag": "NBA",
+              "description": ""
+            },
+            {
+              "id": 149,
+              "tag_type": 1,
+              "tag": "电子竞技",
+              "description": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "选择高关注的热点讨论",
+      "icon": "",
+      "sub_groups": [
+        {
+          "tags": [
+            {
+              "id": 363,
+              "tag_type": 0,
+              "tag": "手机壁纸",
+              "description": "一定能找到你想要的"
+            },
+            {
+              "id": 388,
+              "tag_type": 0,
+              "tag": "万能表情包",
+              "description": "表情包使我快乐"
+            },
+            {
+              "id": 408,
+              "tag_type": 0,
+              "tag": "历史上的同步事件",
+              "description": "没点知识怎么穿越呢？"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "选择想了解的专业领域",
+      "icon": "",
+      "sub_groups": [
+        {
+          "tags": [
+            {
+              "id": 193,
+              "tag_type": 1,
+              "tag": "心理学",
+              "description": ""
+            },
+            {
+              "id": 294,
+              "tag_type": 1,
+              "tag": "职业发展",
+              "description": ""
+            },
+            {
+              "id": 131,
+              "tag_type": 1,
+              "tag": "教育",
+              "description": ""
+            },
+            {
+              "id": 271,
+              "tag_type": 1,
+              "tag": "投资理财",
+              "description": ""
+            },
+            {
+              "id": 79,
+              "tag_type": 1,
+              "tag": "历史",
+              "description": ""
+            },
+            {
+              "id": 261,
+              "tag_type": 1,
+              "tag": "艺术",
+              "description": ""
+            },
+            {
+              "id": 3,
+              "tag_type": 1,
+              "tag": "科技",
+              "description": ""
+            },
+            {
+              "id": 350,
+              "tag_type": 1,
+              "tag": "互联网",
+              "description": ""
+            },
+            {
+              "id": 4,
+              "tag_type": 1,
+              "tag": "3C 数码",
+              "description": ""
+            },
+            {
+              "id": 156,
+              "tag_type": 1,
+              "tag": "自然科学",
+              "description": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "选择喜欢的生活方式",
+      "icon": "",
+      "sub_groups": [
+        {
+          "tags": [
+            {
+              "id": 204,
+              "tag_type": 1,
+              "tag": "健康",
+              "description": ""
+            },
+            {
+              "id": 70,
+              "tag_type": 1,
+              "tag": "恋爱",
+              "description": ""
+            },
+            {
+              "id": 173,
+              "tag_type": 1,
+              "tag": "婚姻",
+              "description": ""
+            },
+            {
+              "id": 161,
+              "tag_type": 1,
+              "tag": "时尚穿搭",
+              "description": ""
+            },
+            {
+              "id": 186,
+              "tag_type": 1,
+              "tag": "健身减脂",
+              "description": ""
+            },
+            {
+              "id": 283,
+              "tag_type": 1,
+              "tag": "护肤",
+              "description": ""
+            },
+            {
+              "id": 300,
+              "tag_type": 1,
+              "tag": "美妆",
+              "description": ""
+            },
+            {
+              "id": 6,
+              "tag_type": 1,
+              "tag": "家居",
+              "description": ""
+            },
+            {
+              "id": 5,
+              "tag_type": 1,
+              "tag": "母婴亲子",
+              "description": ""
+            },
+            {
+              "id": 291,
+              "tag_type": 1,
+              "tag": "萌宠",
+              "description": ""
+            },
+            {
+              "id": 354,
+              "tag_type": 1,
+              "tag": "汽车",
+              "description": ""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "title": "告诉我至少 3 个感兴趣的话题，\n一起看点「有意思」的"
+}

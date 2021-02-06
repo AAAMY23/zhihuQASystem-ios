@@ -1,0 +1,12 @@
+{
+  "data" : [
+    {
+      "filename" : "grow_guide_dialog.json",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

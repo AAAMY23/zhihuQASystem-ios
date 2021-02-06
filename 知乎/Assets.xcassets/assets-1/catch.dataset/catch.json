@@ -1,0 +1,116 @@
+[
+  {
+    "exception": "android.view.WindowManager$BadTokenException",
+    "message": "is your activity running"
+  },
+  {
+    "exception": "java.lang.IllegalArgumentException",
+    "message": "not attached to window manager",
+    "condition": {
+      "ratio": 100,
+      "name": "handleDestroyActivity",
+      "apis": [
+        21,
+        22,
+        23
+      ]
+    }
+  },
+  {
+    "exception": "java.lang.IllegalArgumentException",
+    "message": "port out of range:-1, url"
+  },
+  {
+    "exception": "java.lang.IllegalArgumentException",
+    "message": "reportSizeConfigurations"
+  },
+  {
+    "exception": "java.lang.IllegalStateException",
+    "message": "Activity top position already set to onTop=false"
+  },
+  {
+    "exception": "android.view.WindowManager$BadTokenException",
+    "message": "has already been added",
+    "condition": {
+      "ratio": 100,
+      "name": "handleDestroyActivity",
+      "apis": [
+        21,
+        22,
+        23
+      ]
+    }
+  },
+  {
+    "exception": "javax.net.ssl.SSLException",
+    "message": "Unable to create application data",
+    "condition": {
+      "ratio": 100,
+      "name": "SSLException",
+      "apis": [
+        27
+      ]
+    }
+  },
+  {
+    "exception": "android.app.RemoteServiceException",
+    "message": "Context.startForegroundService() did not then call Service.startForeground()",
+    "condition": {
+      "ratio": 100,
+      "name": "push",
+      "apis": [
+        26,
+        27,
+        28,
+        29
+      ]
+    }
+  },
+  {
+    "exception": "java.lang.RuntimeException",
+    "message": "Using WebView from more than one process"
+  },
+  {
+    "exception": "android.app.RemoteServiceException",
+    "message": "can't deliver broadcast"
+  },
+  {
+    "exception": "android.app.RemoteServiceException",
+    "message": "Bad notification"
+  },
+  {
+    "exception": "java.util.concurrent.TimeoutException",
+    "message": "finalize"
+  },
+  {
+    "exception": "java.lang.IndexOutOfBoundsException",
+    "traces": [
+      "android.view.ViewGroup.populateChildrenForAutofill"
+    ]
+  },
+  {
+    "exception": "com.tencent.tinker.loader.TinkerRuntimeException",
+    "message": "Tinker instance is already set"
+  },
+  {
+    "exception": "android.view.ViewRootImpl$CalledFromWrongThreadException"
+  },
+  {
+    "exception": "android.database.sqlite.SQLiteDiskIOException"
+  },
+  {
+    "exception": "android.database.sqlite.SQLiteDatabaseCorruptException"
+  },
+  {
+    "exception": "java.lang.NullPointerException",
+    "message": "Context.getResources"
+  },
+  {
+    "exception": "android.database.CursorWindowAllocationException",
+    "message": "Could not allocate CursorWindow"
+  },
+  {
+    "exception": "java.lang.SecurityException",
+    "message": "Binder invocation to an incorrect interface"
+  }
+]

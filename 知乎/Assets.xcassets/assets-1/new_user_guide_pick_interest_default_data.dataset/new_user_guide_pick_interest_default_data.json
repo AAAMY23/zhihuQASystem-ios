@@ -1,0 +1,469 @@
+{
+  "id": 13,
+  "title": "选择你喜欢的内容",
+  "sub_title": "可多选，至少选 2 项",
+  "data": [
+    {
+      "id": 103,
+      "tag_type": 1,
+      "tag": "大学",
+      "description": "",
+      "emoji_name": "college",
+      "sub_tags": [
+        {
+          "id": 102,
+          "tag_type": 1,
+          "tag": "大学生活",
+          "description": ""
+        },
+        {
+          "id": 132,
+          "tag_type": 1,
+          "tag": "高考",
+          "description": ""
+        },
+        {
+          "id": 205,
+          "tag_type": 1,
+          "tag": "考研",
+          "description": ""
+        },
+        {
+          "id": 513,
+          "tag_type": 1,
+          "tag": "应届生求职",
+          "description": "新用户引导改版实验标签"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "tag_type": 1,
+      "tag": "母婴亲子",
+      "description": "",
+      "emoji_name": "parent-child",
+      "sub_tags": [
+        {
+          "id": 138,
+          "tag_type": 1,
+          "tag": "育儿",
+          "description": ""
+        },
+        {
+          "id": 532,
+          "tag_type": 1,
+          "tag": "孕期",
+          "description": ""
+        },
+        {
+          "id": 533,
+          "tag_type": 1,
+          "tag": "儿童教育",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "tag_type": 1,
+      "tag": "情感",
+      "description": "",
+      "emoji_name": "emotion",
+      "sub_tags": [
+        {
+          "id": 70,
+          "tag_type": 1,
+          "tag": "恋爱",
+          "description": ""
+        },
+        {
+          "id": 173,
+          "tag_type": 1,
+          "tag": "婚姻",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "id": 165,
+      "tag_type": 1,
+      "tag": "音乐",
+      "description": "",
+      "emoji_name": "music",
+      "sub_tags": [
+        {
+          "id": 277,
+          "tag_type": 1,
+          "tag": "华语音乐",
+          "description": ""
+        },
+        {
+          "id": 329,
+          "tag_type": 1,
+          "tag": "欧美音乐",
+          "description": ""
+        },
+        {
+          "id": 524,
+          "tag_type": 1,
+          "tag": "日韩音乐",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "id": 518,
+      "tag_type": 1,
+      "tag": "职场",
+      "description": "新用户引导改版实验标签",
+      "emoji_name": "workplace",
+      "sub_tags": [
+        {
+          "id": 519,
+          "tag_type": 1,
+          "tag": "求职",
+          "description": "新用户引导改版实验标签"
+        },
+        {
+          "id": 520,
+          "tag_type": 1,
+          "tag": "公务员",
+          "description": "新用户引导改版实验标签"
+        },
+        {
+          "id": 521,
+          "tag_type": 1,
+          "tag": "职场心理",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "id": 297,
+      "tag_type": 1,
+      "tag": "游戏",
+      "description": "",
+      "emoji_name": "game",
+      "sub_tags": [
+        {
+          "id": 52,
+          "tag_type": 1,
+          "tag": "单机游戏",
+          "description": ""
+        },
+        {
+          "id": 537,
+          "tag_type": 1,
+          "tag": "王者荣耀",
+          "description": ""
+        },
+        {
+          "id": 538,
+          "tag_type": 1,
+          "tag": "英雄联盟",
+          "description": ""
+        },
+        {
+          "id": 539,
+          "tag_type": 1,
+          "tag": "电竞",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "id": 525,
+      "tag_type": 1,
+      "tag": "科技控",
+      "description": "",
+      "emoji_name": "field-of-science",
+      "sub_tags": [
+        {
+          "id": 3,
+          "tag_type": 1,
+          "tag": "科技",
+          "description": ""
+        },
+        {
+          "id": 526,
+          "tag_type": 1,
+          "tag": "数码",
+          "description": ""
+        },
+        {
+          "id": 527,
+          "tag_type": 1,
+          "tag": "计算机",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "id": 156,
+      "tag_type": 1,
+      "tag": "自然科学",
+      "description": "",
+      "emoji_name": "natural-science",
+      "sub_tags": [
+        {
+          "id": 82,
+          "tag_type": 1,
+          "tag": "科普",
+          "description": ""
+        },
+        {
+          "id": 323,
+          "tag_type": 1,
+          "tag": "数学",
+          "description": ""
+        },
+        {
+          "id": 528,
+          "tag_type": 1,
+          "tag": "冷知识",
+          "description": ""
+        },
+        {
+          "id": 529,
+          "tag_type": 1,
+          "tag": "生物化学",
+          "description": ""
+        },
+        {
+          "id": 530,
+          "tag_type": 1,
+          "tag": "物理天文",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "tag_type": 1,
+      "tag": "体育",
+      "description": "",
+      "emoji_name": "sports",
+      "sub_tags": [
+        {
+          "id": 125,
+          "tag_type": 1,
+          "tag": "足球",
+          "description": ""
+        },
+        {
+          "id": 324,
+          "tag_type": 1,
+          "tag": "NBA",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "id": 107,
+      "tag_type": 1,
+      "tag": "时尚",
+      "description": "",
+      "emoji_name": "fashion",
+      "sub_tags": [
+        {
+          "id": 283,
+          "tag_type": 1,
+          "tag": "护肤",
+          "description": ""
+        },
+        {
+          "id": 300,
+          "tag_type": 1,
+          "tag": "美妆",
+          "description": ""
+        },
+        {
+          "id": 514,
+          "tag_type": 1,
+          "tag": "穿搭",
+          "description": "新用户引导改版实验标签"
+        },
+        {
+          "id": 515,
+          "tag_type": 1,
+          "tag": "健身减肥",
+          "description": "新用户引导改版实验标签"
+        }
+      ]
+    },
+    {
+      "id": 531,
+      "tag_type": 1,
+      "tag": "生活家",
+      "description": "",
+      "emoji_name": "social-sciences",
+      "sub_tags": [
+        {
+          "id": 56,
+          "tag_type": 1,
+          "tag": "摄影",
+          "description": ""
+        },
+        {
+          "id": 118,
+          "tag_type": 1,
+          "tag": "旅行",
+          "description": ""
+        },
+        {
+          "id": 291,
+          "tag_type": 1,
+          "tag": "萌宠",
+          "description": ""
+        },
+        {
+          "id": 345,
+          "tag_type": 1,
+          "tag": "美食",
+          "description": ""
+        },
+        {
+          "id": 354,
+          "tag_type": 1,
+          "tag": "汽车",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "id": 295,
+      "tag_type": 1,
+      "tag": "军事",
+      "description": "",
+      "emoji_name": "military-science",
+      "sub_tags": [
+        {
+          "id": 535,
+          "tag_type": 1,
+          "tag": "军事装备",
+          "description": ""
+        },
+        {
+          "id": 536,
+          "tag_type": 1,
+          "tag": "军事研究",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "id": 534,
+      "tag_type": 1,
+      "tag": "人文",
+      "description": "",
+      "emoji_name": "humanity",
+      "sub_tags": [
+        {
+          "id": 79,
+          "tag_type": 1,
+          "tag": "历史",
+          "description": ""
+        },
+        {
+          "id": 195,
+          "tag_type": 1,
+          "tag": "阅读",
+          "description": ""
+        },
+        {
+          "id": 261,
+          "tag_type": 1,
+          "tag": "艺术",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "id": 204,
+      "tag_type": 1,
+      "tag": "健康",
+      "description": "",
+      "emoji_name": "health",
+      "sub_tags": [
+        {
+          "id": 34,
+          "tag_type": 1,
+          "tag": "健康常识",
+          "description": ""
+        },
+        {
+          "id": 516,
+          "tag_type": 1,
+          "tag": "医学",
+          "description": "新用户引导改版实验标签"
+        },
+        {
+          "id": 517,
+          "tag_type": 1,
+          "tag": "减肥",
+          "description": "新用户引导改版实验标签"
+        }
+      ]
+    },
+    {
+      "id": 522,
+      "tag_type": 1,
+      "tag": "二次元",
+      "description": "",
+      "emoji_name": "cartoon",
+      "sub_tags": [
+        {
+          "id": 146,
+          "tag_type": 1,
+          "tag": "动漫",
+          "description": ""
+        },
+        {
+          "id": 223,
+          "tag_type": 1,
+          "tag": "cosplay",
+          "description": ""
+        },
+        {
+          "id": 523,
+          "tag_type": 1,
+          "tag": "B 站",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "id": 511,
+      "tag_type": 1,
+      "tag": "影视综",
+      "description": "新用户引导改版实验标签",
+      "emoji_name": "film",
+      "sub_tags": [
+        {
+          "id": 1,
+          "tag_type": 1,
+          "tag": "电影",
+          "description": ""
+        },
+        {
+          "id": 2,
+          "tag_type": 1,
+          "tag": "电视剧",
+          "description": ""
+        },
+        {
+          "id": 13,
+          "tag_type": 1,
+          "tag": "综艺",
+          "description": ""
+        },
+        {
+          "id": 503,
+          "tag_type": 1,
+          "tag": "短视频",
+          "description": ""
+        }
+      ]
+    }
+  ]
+}

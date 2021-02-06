@@ -1,0 +1,25 @@
+[
+  {
+    "_comment": "Fantasy channel so（外置|非耦合）",
+    "packageName": "com.ixigua.fantasy.common.wschannel.so_plugin",
+    "pluginType": 2
+  },
+  {
+    "_comment": "Fantasy video（外置|耦合）",
+    "packageName": "com.ixigua.feature.fantasy.ttmain.player",
+    "pluginType": 2,
+    "extraPackages": ["com.ss.ttmplayer.player"]
+  },
+  {
+    "_comment": "qrcode（外置|非耦合）",
+    "packageName": "com.wukong.qrcode",
+    "pluginType": 2,
+    "standalone":true
+  },
+  {
+    "_comment": "flutter（外置|耦合）",
+    "packageName":"com.ss.android.flutter",
+    "pluginType":2,
+    "minVersionCode":26300
+  }
+]

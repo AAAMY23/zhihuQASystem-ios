@@ -1,0 +1,12 @@
+{
+  "data" : [
+    {
+      "filename" : "moment.min.js",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

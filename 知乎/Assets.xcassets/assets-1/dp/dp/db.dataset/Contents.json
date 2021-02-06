@@ -1,0 +1,12 @@
+{
+  "data" : [
+    {
+      "filename" : "db.js",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

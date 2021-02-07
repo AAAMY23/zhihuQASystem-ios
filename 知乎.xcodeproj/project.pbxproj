@@ -3,12 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		2B2E0D2225CD499400777E38 /* personalAllQViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B2E0D2125CD499400777E38 /* personalAllQViewController.m */; };
 		2B2E0D5225CEC6DC00777E38 /* hotTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B2E0D5125CEC6DC00777E38 /* hotTopicViewController.m */; };
+		2B2E0D7625CEE9A800777E38 /* mainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B2E0D7525CEE9A800777E38 /* mainViewController.m */; };
 		2B331EF825A1B915003192CF /* xixi.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2B331EF725A1B915003192CF /* xixi.jpg */; };
 		2B331EFD25A1B92E003192CF /* sucai2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2B331EFC25A1B92E003192CF /* sucai2.jpg */; };
 		2B331F0225A1B99C003192CF /* 可操作.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B331F0125A1B99C003192CF /* 可操作.png */; };
@@ -43,7 +44,6 @@
 		2BD3347D25653E2B00CE3DD0 /* __Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD3347C25653E2B00CE3DD0 /* __Tests.m */; };
 		2BD3348825653E2B00CE3DD0 /* __UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD3348725653E2B00CE3DD0 /* __UITests.m */; };
 		324971DE54EC292A8BA9155A /* Pods___Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A181EBACF78F47530ECC591 /* Pods___Tests.framework */; };
-		82F8903F8DFB3A0AB5D94D6F /* Pods___.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D0F1AE7200357374B02E164 /* Pods___.framework */; };
 		976873648413AA3EAF4B783D /* Pods______UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73BB73F6AE793C961F75E669 /* Pods______UITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -67,11 +67,13 @@
 /* Begin PBXFileReference section */
 		055F0B700B23279C702CD665 /* Pods-知乎.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-知乎.release.xcconfig"; path = "Target Support Files/Pods-知乎/Pods-知乎.release.xcconfig"; sourceTree = "<group>"; };
 		1B3E850CFE733D6BD041FAD7 /* Pods-知乎-知乎UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-知乎-知乎UITests.release.xcconfig"; path = "Target Support Files/Pods-知乎-知乎UITests/Pods-知乎-知乎UITests.release.xcconfig"; sourceTree = "<group>"; };
-		1D0F1AE7200357374B02E164 /* Pods___.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods___.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D0F1AE7200357374B02E164 /* Pods___.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods___.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B2E0D2025CD499400777E38 /* personalAllQViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = personalAllQViewController.h; sourceTree = "<group>"; };
 		2B2E0D2125CD499400777E38 /* personalAllQViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = personalAllQViewController.m; sourceTree = "<group>"; };
 		2B2E0D5025CEC6DB00777E38 /* hotTopicViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = hotTopicViewController.h; sourceTree = "<group>"; };
 		2B2E0D5125CEC6DC00777E38 /* hotTopicViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = hotTopicViewController.m; sourceTree = "<group>"; };
+		2B2E0D7425CEE9A800777E38 /* mainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mainViewController.h; sourceTree = "<group>"; };
+		2B2E0D7525CEE9A800777E38 /* mainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mainViewController.m; sourceTree = "<group>"; };
 		2B331EF725A1B915003192CF /* xixi.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = xixi.jpg; path = "../../../../../Desktop/工程实践素材图片/xixi.jpg"; sourceTree = "<group>"; };
 		2B331EFC25A1B92E003192CF /* sucai2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = sucai2.jpg; path = "../../../../../Desktop/工程实践素材图片/sucai2.jpg"; sourceTree = "<group>"; };
 		2B331F0125A1B99C003192CF /* 可操作.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "可操作.png"; path = "../../../../../Desktop/工程实践素材图片/可操作.png"; sourceTree = "<group>"; };
@@ -135,8 +137,8 @@
 		2BD3348325653E2B00CE3DD0 /* 知乎UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "知乎UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BD3348725653E2B00CE3DD0 /* __UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = __UITests.m; sourceTree = "<group>"; };
 		2BD3348925653E2B00CE3DD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		73BB73F6AE793C961F75E669 /* Pods______UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods______UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7A181EBACF78F47530ECC591 /* Pods___Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods___Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		73BB73F6AE793C961F75E669 /* Pods______UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods______UITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A181EBACF78F47530ECC591 /* Pods___Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods___Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		96ECCA6C3A1D1D419650BA92 /* Pods-知乎-知乎UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-知乎-知乎UITests.debug.xcconfig"; path = "Target Support Files/Pods-知乎-知乎UITests/Pods-知乎-知乎UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		9FD8675D781C2E25FF401D14 /* Pods-知乎Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-知乎Tests.release.xcconfig"; path = "Target Support Files/Pods-知乎Tests/Pods-知乎Tests.release.xcconfig"; sourceTree = "<group>"; };
 		C2B53E50481ABAE6D8EC9E79 /* Pods-知乎.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-知乎.debug.xcconfig"; path = "Target Support Files/Pods-知乎/Pods-知乎.debug.xcconfig"; sourceTree = "<group>"; };
@@ -148,7 +150,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				82F8903F8DFB3A0AB5D94D6F /* Pods___.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,7 +192,6 @@
 				D1D8E9B94E4EE402E8D60670 /* Pods-知乎Tests.debug.xcconfig */,
 				9FD8675D781C2E25FF401D14 /* Pods-知乎Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -296,6 +296,8 @@
 				2B2E0D2125CD499400777E38 /* personalAllQViewController.m */,
 				2B2E0D5025CEC6DB00777E38 /* hotTopicViewController.h */,
 				2B2E0D5125CEC6DC00777E38 /* hotTopicViewController.m */,
+				2B2E0D7425CEE9A800777E38 /* mainViewController.h */,
+				2B2E0D7525CEE9A800777E38 /* mainViewController.m */,
 			);
 			path = "知乎";
 			sourceTree = "<group>";
@@ -586,6 +588,7 @@
 				2B89C5E92581C27F0065C8D9 /* loginMyPageViewController.m in Sources */,
 				2BD3347325653E2B00CE3DD0 /* main.m in Sources */,
 				2B7FC0C62594C0160065FFCE /* answerListTableViewCell.m in Sources */,
+				2B2E0D7625CEE9A800777E38 /* mainViewController.m in Sources */,
 				2B89C5C62580F8AD0065C8D9 /* NormalTableViewCell.m in Sources */,
 				2BD3346525653E2A00CE3DD0 /* SceneDelegate.m in Sources */,
 			);

@@ -69,7 +69,7 @@
         })];
         [self.contentView addSubview:({
             self.image1=[[UIImageView alloc]initWithFrame:CGRectMake(270.f, 80.f, 96.f, 70.f)];
-            //self.image1.image=[UIImage imageNamed:@"sucai2.jpg"];
+            self.image1.image=[UIImage imageNamed:@"sucai2.jpg"];
             //self.image1.backgroundColor=[UIColor grayColor];
             self.image1;
         })];

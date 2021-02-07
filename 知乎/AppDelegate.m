@@ -11,6 +11,8 @@
 #import "loginMyPageViewController.h"
 #import "askQuestionViewController.h"
 
+#import "mainViewController.h"
+
 @interface AppDelegate ()
 @property(nonatomic,strong) NSUserDefaults *userdefault;
 @property(nonatomic,strong) UINavigationController *navigationcontroller1;
@@ -23,12 +25,13 @@
 
     self.window=[[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     
-    questionPlazaViewController *viewController=[[questionPlazaViewController alloc]init];
+    mainViewController *mainVC=[[mainViewController alloc]init];
+    //questionPlazaViewController *viewController=[[questionPlazaViewController alloc]init];
         
     myPageViewController *controller2=[[myPageViewController alloc]init];
     loginMyPageViewController *controller3=[[loginMyPageViewController alloc]init];
     
-    UINavigationController *navigation1=[[UINavigationController alloc]initWithRootViewController:viewController];
+    UINavigationController *navigation1=[[UINavigationController alloc]initWithRootViewController:mainVC];
     navigation1.tabBarItem.title=@"首页";
     
     UINavigationController *navigation2=[[UINavigationController alloc]initWithRootViewController:controller2];

@@ -36,10 +36,12 @@
 - (instancetype)init{
     self=[super init];
     if(self){
-    self.view.backgroundColor=[UIColor whiteColor];
+        self.view.backgroundColor=[UIColor colorWithRed:242.0/255 green:242.0/255 blue:247.0/255 alpha:1.0];
+        /*
     self.navigationItem.hidesBackButton=YES;
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd  target:self action:@selector(askQuestionpushaskQ)];
         self.navigationItem.rightBarButtonItem = rightButton;
+         */
     }
     return  self;
 }
@@ -58,33 +60,37 @@
 - (void)viewDidLoad {//加载完毕的时候
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    /*
     [self.view addSubview:({
         self.titleScrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 90.f, self.view.bounds.size.width, 60.f)];
+        self.titleScrollView.backgroundColor=[UIColor whiteColor];
         self.titleScrollView;
     })];
     
-    [self.view addSubview:({
-        self.recommendBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 90.f,kScreenWidth*0.5,60.f)];
+    [self setupAllChildViewController];
+    
+    [self.titleScrollView addSubview:({
+        self.recommendBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 0,kScreenWidth*0.5,59.f)];
         [self.recommendBtn setTitle:@"推荐" forState:UIControlStateNormal];
-        self.recommendBtn.layer.borderWidth=0.5;
+        self.recommendBtn.titleLabel.font=[UIFont boldSystemFontOfSize:20.f];
         [self.recommendBtn addTarget:self action:@selector(buttonClick1) forControlEvents:UIControlEventTouchUpInside];
         [self.recommendBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         self.recommendBtn;
     })];
     
-    [self.view addSubview:({
-        self.topicalBtn=[[UIButton alloc]initWithFrame:CGRectMake(kScreenWidth*0.5, 90.f, kScreenWidth*0.5, self.recommendBtn.bounds.size.height)];
+    [self.titleScrollView addSubview:({
+        self.topicalBtn=[[UIButton alloc]initWithFrame:CGRectMake(kScreenWidth*0.5, 0, kScreenWidth*0.5, self.recommendBtn.bounds.size.height)];
         [self.topicalBtn setTitle:@"热门" forState:UIControlStateNormal];
-        self.topicalBtn.layer.borderWidth=0.5;
+        self.topicalBtn.titleLabel.font=[UIFont boldSystemFontOfSize:20.f];
         [self.topicalBtn addTarget:self action:@selector(buttonClick2) forControlEvents:UIControlEventTouchUpInside];
         [self.topicalBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
         self.topicalBtn;
     })];
-    
+    */
     [self.view addSubview:({
-        self.scrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 150.f, self.view.bounds.size.width, self.view.bounds.size.height)];
+        self.scrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
         //self.scrollview=[[UIScrollView alloc]initWithFrame:self.view.bounds];
-        self.scrollview.contentSize=CGSizeMake(self.view.bounds.size.width*2, self.view.bounds.size.height);
+        self.scrollview.contentSize=CGSizeMake(self.view.bounds.size.width, self.view.bounds.size.height);
         self.scrollview.pagingEnabled=YES;
         self.scrollview.delegate=self;
         self.scrollview;
@@ -107,7 +113,7 @@
     //[tableHeaderView1 addSubview:self.topView];
     
 
-    
+    /*
     [self.view addSubview:({
         self.tableView2=[[UITableView alloc]initWithFrame:CGRectMake(kScreenWidth, 0, kScreenWidth, KScreenHeight-90) style:UITableViewStyleGrouped];
         self.tableView2.dataSource=self;
@@ -117,12 +123,12 @@
         self.tableView2;
     })];
     
-
+*/
    [self.scrollview addSubview:self.tableView1];
-    [self.scrollview addSubview:self.tableView2];
+   // [self.scrollview addSubview:self.tableView2];
 
 }
-
+/*
 -(void)buttonClick1{
     [self.recommendBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.topicalBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
@@ -148,6 +154,7 @@
     }
 
 }
+ */
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
@@ -208,6 +215,7 @@
     //首页
     //热门
     hotTopicViewController *hotVC=[[hotTopicViewController alloc]init];
+    hotVC.title=@"热门";
     [self addChildViewController:hotVC];
 }
     @end

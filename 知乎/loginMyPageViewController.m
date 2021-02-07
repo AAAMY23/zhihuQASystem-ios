@@ -117,6 +117,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
+    /*
     NSURL *personUrl=[NSURL URLWithString:@"http://8.136.142.201:9090//question/queryAllByUserId"];
     NSMutableURLRequest *presonRequest=[NSMutableURLRequest requestWithURL:personUrl];
     NSUserDefaults *userdefault1=[NSUserDefaults standardUserDefaults];
@@ -131,6 +132,9 @@
         });
     }];
     [personDataTask resume];
+    */
+    personalAllQViewController *personalQ=[[personalAllQViewController alloc]init];
+    [self.navigationController pushViewController:personalQ animated:YES];
     
 }
 @end

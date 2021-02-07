@@ -6,25 +6,123 @@
 //
 
 #import "hotTopicViewController.h"
-@interface hotTopicViewController ()
+#import <AFNetworking/AFNetworking.h>
+#import "questionPlazaLoaditem.h"
+#import "qaDetailViewController.h"
 
+@interface hotTopicViewController ()<UITableViewDelegate,UITableViewDataSource>
+@property(nonatomic,strong)UITableView *hotView;
+@property(nonatomic,strong)NSArray *dataArray;
+@property(nonatomic,strong)questionPlazaLoaditem *data;
 @end
 
 @implementation hotTopicViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.view.backgroundColor=[UIColor orangeColor];
+    [self.view addSubview:({
+        self.hotView=[[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
+        self.hotView.delegate=self;
+        self.hotView.dataSource=self;
+        self.hotView;
+    })];
+
 }
 
-/*
-#pragma mark - Navigation
+-(void)viewWillAppear:(BOOL)animated{
+    __weak typeof(self)wself=self;
+   // self.loadlist=[[qusetionplazaListload alloc]init];
+    [self loadlistDataFinishWithBlock:^(BOOL success, NSArray<questionPlazaLoaditem *> * _Nonnull listArray){
+        __strong typeof(wself) strongSelf=wself;
+        strongSelf.dataArray=listArray;//此处已获得listArray中转换过来的title
+        [strongSelf.hotView reloadData];
+    }];
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
 }
-*/
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    //return [self.datalist count];
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return [self.dataArray count];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 100;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"id"];
+    //复用
+    if(!cell){
+        cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"id"];
+        self.data=[self.dataArray objectAtIndex:indexPath.row];
+        
+        UILabel *questionTitle=[[UILabel alloc]initWithFrame:CGRectMake(20.f, 10.f,260.f, 30.f)];
+        questionTitle.text=self.data.title;
+        questionTitle.font=[UIFont boldSystemFontOfSize:20.f];
+        [cell.contentView addSubview:questionTitle];
+        
+        UILabel *hotNumber=[[UILabel alloc]initWithFrame:CGRectMake(20.f, 35.f, 150.f, 30.f)];
+        hotNumber.text=[NSString stringWithFormat:@"%@热度",self.data.answerCount];
+        [cell.contentView addSubview:hotNumber];
+        
+        cell.textLabel.text=self.data.questionId;
+        cell.textLabel.textColor=[UIColor colorWithWhite:0.25 alpha:0];
+        cell.detailTextLabel.text=self.data.questionCreatorId;
+        cell.detailTextLabel.textColor=[UIColor colorWithWhite:0.25 alpha:0];
+        
+        
+        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(270.f, 10.f, 96.f, 70.f)];
+        imageView.image = [UIImage imageNamed:@"xixi.jpg"];
+        [cell.contentView addSubview:imageView];
+    }
+    return  cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    qaDetailViewController *viewcontroller1=[[qaDetailViewController alloc]init];
+    //将标题传过去
+    UITableViewCell *cell=[tableView cellForRowAtIndexPath:indexPath];
+    viewcontroller1.questionId=cell.textLabel.text;
+    viewcontroller1.questionCreatorId=cell.detailTextLabel.text;
+
+    [self.navigationController pushViewController:viewcontroller1 animated:YES];
+}
+
+-(void)loadlistDataFinishWithBlock:(loadlistDataFinishblock)finishBlock{
+    //1、创建会话管理者
+    AFHTTPSessionManager *manager=[AFHTTPSessionManager manager];
+    //2、发送get请求
+    //[manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-type"];
+    NSDictionary *dic=@{
+        @"Content-type":@"application/json",
+    };
+    //task:请求任务  responseObject:响应体(JSON-->OC对象)
+    [manager GET:@"http://8.136.142.201:9090/question/queryHotList" parameters:nil headers:dic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        NSArray *hotTopic=responseObject[@"data"];
+        NSMutableArray *listArray=[[NSMutableArray alloc]init];
+        for(NSDictionary *str in hotTopic){
+            questionPlazaLoaditem *list=[[questionPlazaLoaditem alloc]init];
+            [list configWithDictonary:str];
+            [listArray addObject:list];
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+        if(finishBlock){
+            finishBlock(YES,listArray.copy);
+        }
+        });
+        
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            NSLog(@"请求失败");
+        }];
+}
+
 
 @end

@@ -16,12 +16,16 @@
 #import "answerDetailViewController.h"
 #import "detailAnswerCell.h"
 #import "askQuestionViewController.h"
+#import <AFNetworking/AFNetworking.h>
+#import <SDWebImage.h>
+#import <MBProgressHUD.h>
 
 
 @interface qaDetailViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property(nonatomic,strong) UIScrollView *qaScrollview;
 @property(nonatomic,strong) UITableView *detail;
 @property(nonatomic,strong) UILabel *questionDetail;
+@property(nonatomic,strong) UIImageView *askPhoto;
 @property(nonatomic,strong) UILabel *questionCreatorNickname;
 @property(nonatomic,strong) UILabel *questionContentLable;
 @property(nonatomic,strong) UIButton *answer;
@@ -33,6 +37,8 @@
 @property(nonatomic,strong) UILabel *answerCountLable;
 @property(nonatomic,strong) UIButton *updateAnswer;
 @property(nonatomic,strong) NSMutableDictionary *answerContent;
+@property(nonatomic,strong) UIButton *timeRank;
+@property(nonatomic,strong) UIButton *scoreRank;
 @end
 
 @implementation qaDetailViewController
@@ -56,8 +62,9 @@
         self.detail.dataSource=self;
         self.detail.delegate=self;
         self.detail.rowHeight=200.f;
-        self.detail.sectionHeaderHeight=45;
+        self.detail.sectionHeaderHeight=8;
         self.detail.sectionFooterHeight=3;
+        [self setHeaderView];
         //self.detail.contentInset=UIEdgeInsetsMake(-34, 0, 0, 0);
         //self.detail.tableHeaderView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 140.f)];
         self.detail;
@@ -67,13 +74,17 @@
         self.questionDetail=[[UILabel alloc]initWithFrame:CGRectMake(10.f, 90.f, self.view.bounds.size.width, 100.f)];
         //self.questionDetail.text=self.questionTitle;
         NSLog(@"questionId=%@",self.questionId);
-        //self.questionDetail.backgroundColor=[UIColor greenColor];
         self.questionDetail.font=[UIFont systemFontOfSize:20.f];
         self.questionDetail.backgroundColor=[UIColor whiteColor];
+        self.questionDetail.numberOfLines=0;
         self.questionDetail;
     })];
     [self.view addSubview:({
-        self.questionCreatorNickname=[[UILabel alloc]initWithFrame:CGRectMake(10.f, 200.f, 250.f, 20.f)];
+        self.askPhoto=[[UIImageView alloc]initWithFrame:CGRectMake(10.f, 200.f, 20.f, 20.f)];
+        self.askPhoto;
+    })];
+    [self.view addSubview:({
+        self.questionCreatorNickname=[[UILabel alloc]initWithFrame:CGRectMake(40.f, 200.f, 250.f, 20.f)];
         //self.questionCreatorNickname.text=self.questionNickname;
         self.questionCreatorNickname.font=[UIFont systemFontOfSize:15.f];
         self.questionCreatorNickname.backgroundColor=[UIColor whiteColor];
@@ -85,6 +96,7 @@
         //self.questionContentLable.text=self.questionContent;
         self.questionContentLable.font=[UIFont systemFontOfSize:15.f];
         self.questionContentLable.backgroundColor=[UIColor whiteColor];
+        self.questionContentLable.numberOfLines=0;
         self.questionContentLable;
     })];
     
@@ -93,7 +105,6 @@
     if([self.questionCreatorId isEqualToString:[self.userdefault objectForKey:@"userId"]]){
         
         self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"删除问题" style:UIBarButtonItemStylePlain target:self action:@selector(pushDeleteQuestion)];
-        
         
         [self.view addSubview:({
             self.answer=[[UIButton alloc]initWithFrame:CGRectMake(self.view.bounds.size.width*0.5, 300.f, self.view.bounds.size.width*0.5, 40.f)];
@@ -145,7 +156,10 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             self.questionDetail.text=[questionData objectForKey:@"title"];
             self.questionContentLable.text=[questionData objectForKey:@"content"];
-            self.questionCreatorNickname.text=[questionCreator objectForKey:@"nickname"];
+            [self.askPhoto sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",[questionCreator objectForKey:@"avatarUrl"]]]];
+            self.questionCreatorNickname.text=[NSString stringWithFormat:@"%@  的提问",[questionCreator objectForKey:@"nickname"]];
+            self.answerCountLable.text=[NSString stringWithFormat:@"回答 %@",[questionData objectForKey:@"answerCount"]];
+            
         });
         
     }];
@@ -153,12 +167,19 @@
     
     __weak typeof(self)wself=self;
     self.loadList=[[answerListLoad alloc]init];
+
+    [self.loadList loadlistDataFinishWithBlock:^(BOOL success, NSArray<answerLoaditem *> * _Nonnull listArray) {
+            __strong typeof(wself) strongSelf=wself;
+            strongSelf.dataArray=listArray;//此处已获得listArray中转换过来的title
+            [strongSelf.detail reloadData];
+        } answer:self.questionId requestUrl:[NSString stringWithFormat:@"http://8.136.142.201:9090/answer?question_id=%@",self.questionId]];
+    /*
     [self.loadList loadlistDataFinishWithBlock:^(BOOL success, NSArray<answerLoaditem *> * _Nonnull listArray) {
         __strong typeof(wself) strongSelf=wself;
         strongSelf.dataArray=listArray;//此处已获得listArray中转换过来的title
         [strongSelf.detail reloadData];
     } answer:self.questionId];
-    
+    */
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -168,7 +189,7 @@
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return [self.dataArray count];
 }
-
+/*
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     if(section==0){
         self.myView=[[UIView alloc]initWithFrame:CGRectMake(10.f, 0, self.view.bounds.size.width, 40.f)];
@@ -181,6 +202,53 @@
         })];
     }
     return  self.myView;
+}
+*/
+
+-(void)setHeaderView{
+    UIView *rank=[[UIView alloc]init];
+    rank.frame=CGRectMake(0, 0, self.detail.bounds.size.width, 35.f);
+    rank.backgroundColor=[UIColor whiteColor];
+    
+    CALayer *bottomLine=[CALayer layer];
+    bottomLine.frame=CGRectMake(0, 0, rank.bounds.size.width, 1);
+    bottomLine.backgroundColor = [UIColor colorWithRed:220/255.0 green:220/255.0 blue:220/255.0 alpha:1.0].CGColor;
+    [rank.layer addSublayer:bottomLine];
+    
+   // UISwitch *switch1=[[UISwitch alloc]initWithFrame:CGRectMake(250.f, 0, 100.f, 35.f)];
+    //switch1.title=@"默认";
+    //[rank addSubview:switch1];
+    
+    self.answerCountLable=[[UILabel alloc]initWithFrame:CGRectMake(10.f, 0, 150.f, 35.f)];
+    //self.answerCountLable.text=[NSString stringWithFormat:@"回答 %@",self.answerCount];
+    self.answerCountLable.textColor=[UIColor blackColor];
+    self.answerCountLable.font=[UIFont boldSystemFontOfSize:15.f];
+    [rank addSubview:self.answerCountLable];
+    
+    self.timeRank=[[UIButton alloc]initWithFrame:CGRectMake(250.f, 0, 50.f, 35.f)];
+    [self.timeRank setTitle:@"时间序" forState:UIControlStateSelected];
+    [self.timeRank setTitleColor:[UIColor blueColor] forState:UIControlStateSelected];
+    
+    [self.timeRank setTitle:@"时间序" forState:UIControlStateNormal];
+    [self.timeRank setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    self.timeRank.titleLabel.font=[UIFont systemFontOfSize:15.f];
+    self.timeRank.selected=YES;
+
+    [self.timeRank addTarget:self action:@selector(btnClick) forControlEvents:UIControlEventTouchUpInside];
+    [rank addSubview:self.timeRank];
+    
+    self.scoreRank=[[UIButton alloc]initWithFrame:CGRectMake(300.f, 0, 50.f, 35.f)];
+    [self.scoreRank setTitle:@"热门度" forState:UIControlStateNormal];
+    [self.scoreRank setTitleColor:[UIColor blueColor] forState:UIControlStateSelected];
+    
+    [self.scoreRank setTitle:@"热门度" forState:UIControlStateNormal];
+    [self.scoreRank setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+
+    self.scoreRank.titleLabel.font=[UIFont systemFontOfSize:15.f];
+    [self.scoreRank addTarget:self action:@selector(btnClick) forControlEvents:UIControlEventTouchUpInside];
+    [rank addSubview:self.scoreRank];
+    
+    self.detail.tableHeaderView=rank;
 }
 
 - (answerListTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -199,7 +267,7 @@
     //viewcontroller1.navigationItem.title=@"详情";
     //将标题传过去
     answerListTableViewCell *cell=[tableView cellForRowAtIndexPath:indexPath];
-    viewcontroller1.questionTitle=self.questionTitle;
+    viewcontroller1.questionTitle=self.questionDetail.text;
     viewcontroller1.questionId=self.questionId;
     viewcontroller1.answerId=cell.answerId;
     viewcontroller1.answerCreatorId=cell.answerCreaterId;
@@ -218,7 +286,8 @@
 
 -(void)pushwriteAnswer{
     writeAnswerViewController *answer1=[[writeAnswerViewController alloc]init];
-    answer1.questionTitle=self.questionTitle;
+    answer1.questionTitle=self.questionDetail.text;
+    //answer1.questionTitle=self.questionTitle;
     answer1.questionId=self.questionId;
     answer1.questionCreatorId=self.questionCreatorId;
     [self.navigationController pushViewController:answer1 animated:YES];
@@ -277,6 +346,36 @@
     askQuestionViewController *askQuestion=[[askQuestionViewController alloc] init];
     [self.navigationController pushViewController:askQuestion animated:YES];
     //[self.navigationController presentViewController:askQuestion animated:YES completion:nil];
+}
+
+-(void)btnClick{
+    self.timeRank.selected=!self.timeRank.selected;
+    self.scoreRank.selected=!self.scoreRank.selected;
+    if(self.timeRank.selected)
+    {
+        __weak typeof(self)wself=self;
+        self.loadList=[[answerListLoad alloc]init];
+
+        [self.loadList loadlistDataFinishWithBlock:^(BOOL success, NSArray<answerLoaditem *> * _Nonnull listArray) {
+                __strong typeof(wself) strongSelf=wself;
+                strongSelf.dataArray=listArray;//此处已获得listArray中转换过来的title
+                [strongSelf.detail reloadData];
+            } answer:self.questionId requestUrl:[NSString stringWithFormat:@"http://8.136.142.201:9090/answer?question_id=%@",self.questionId]];
+    }else{
+        __weak typeof(self)wself=self;
+        self.loadList=[[answerListLoad alloc]init];
+
+        [self.loadList loadlistDataFinishWithBlock:^(BOOL success, NSArray<answerLoaditem *> * _Nonnull listArray) {
+                __strong typeof(wself) strongSelf=wself;
+                strongSelf.dataArray=listArray;//此处已获得listArray中转换过来的title
+                [strongSelf.detail reloadData];
+            } answer:self.questionId requestUrl:[NSString stringWithFormat:@"http://8.136.142.201:9090/question/queryAnswerListByScore?question_id=%@",self.questionId]];
+    }
+    
+    MBProgressHUD *hud=[MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeDeterminateHorizontalBar;
+    hud.label.text=@"更新完成";
+    [hud hideAnimated:YES afterDelay:1];
 }
 
 @end

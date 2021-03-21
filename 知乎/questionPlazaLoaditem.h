@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,strong) NSString *title;
 @property(nonatomic,strong) NSString *questionContent;
 @property(nonatomic,strong) NSString *answerCount;
+@property(nonatomic,strong) NSString *viewCount;
+@property(nonatomic,strong) NSString *score;
 @property(nonatomic,strong) NSString *userId;
 @property(nonatomic,strong) NSDictionary *questionCreator;
 @property(nonatomic,strong) NSString *questionCreatorId;
@@ -23,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,strong) NSDictionary *answerCreator;
 @property(nonatomic,strong) NSString *answerNickname;
 @property(nonatomic,strong) NSString *createAt;
+@property(nonatomic) NSString *answerCAvatarUrl;
 -(void)configWithDictonary:(NSDictionary *)dictonary;
 @end
 

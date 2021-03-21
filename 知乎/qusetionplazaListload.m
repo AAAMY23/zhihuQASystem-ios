@@ -10,7 +10,7 @@
 @implementation qusetionplazaListload
     -(void)loadlistDataFinishWithBlock:(loadlistDataFinishblock)finishBlock{
         @try{
-        //NSURL *questionUrl=[NSURL URLWithString:@"http://localhost:7300/mock/6018e41b15bdb61661f92541/question/queryAll"];
+       // NSURL *questionUrl=[NSURL URLWithString:@"http://localhost:7300/mock/6018e41b15bdb61661f92541/question/queryAll"];
         NSURL *questionUrl=[NSURL URLWithString:@"http://8.136.142.201:9090/question/queryAll"];
         NSUserDefaults *userdefault1=[NSUserDefaults standardUserDefaults];
         NSMutableURLRequest *questionRequest=[NSMutableURLRequest requestWithURL:questionUrl];

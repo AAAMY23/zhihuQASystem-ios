@@ -12,6 +12,7 @@
 #import "questionPlazaTableView.h"
 #import "askQuestionViewController.h"
 #import "hotTopicViewController.h"
+#import <MBProgressHUD.h>
 
 
 //定义手机屏幕的宽和高
@@ -22,13 +23,14 @@
 @property(nonatomic,strong) UIScrollView *titleScrollView;
 @property(nonatomic,strong) UIScrollView *scrollview;
 @property(nonatomic,strong) UITableView *tableView1;
-@property(nonatomic,strong) UITableView *tableView2;
 @property(nonatomic,strong) qusetionplazaListload *loadlist;
 @property(nonatomic,strong) NSArray *dataArray;
 @property(nonatomic,copy) NSString *questionTitle;
-@property(nonatomic,strong)UIButton *recommendBtn;
-@property(nonatomic,strong)UIButton *topicalBtn;
-@property(nonatomic) NSInteger mark;
+@property(nonatomic,strong) UIView *freshHeader;
+@property(nonatomic,strong) UILabel *headerLable;
+//@property(nonatomic,strong)UIButton *recommendBtn;
+//@property(nonatomic,strong)UIButton *topicalBtn;
+//@property(nonatomic) NSInteger mark;
 @end
 
 @implementation questionPlazaViewController
@@ -47,6 +49,12 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    
+    MBProgressHUD *hud=[MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeDeterminateHorizontalBar;
+    hud.label.text=@"首页更新成功";
+    [hud hideAnimated:YES afterDelay:1];
+    
     self.tabBarController.tabBar.hidden = NO;
     __weak typeof(self)wself=self;
     self.loadlist=[[qusetionplazaListload alloc]init];
@@ -60,33 +68,7 @@
 - (void)viewDidLoad {//加载完毕的时候
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    /*
-    [self.view addSubview:({
-        self.titleScrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 90.f, self.view.bounds.size.width, 60.f)];
-        self.titleScrollView.backgroundColor=[UIColor whiteColor];
-        self.titleScrollView;
-    })];
-    
-    [self setupAllChildViewController];
-    
-    [self.titleScrollView addSubview:({
-        self.recommendBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 0,kScreenWidth*0.5,59.f)];
-        [self.recommendBtn setTitle:@"推荐" forState:UIControlStateNormal];
-        self.recommendBtn.titleLabel.font=[UIFont boldSystemFontOfSize:20.f];
-        [self.recommendBtn addTarget:self action:@selector(buttonClick1) forControlEvents:UIControlEventTouchUpInside];
-        [self.recommendBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        self.recommendBtn;
-    })];
-    
-    [self.titleScrollView addSubview:({
-        self.topicalBtn=[[UIButton alloc]initWithFrame:CGRectMake(kScreenWidth*0.5, 0, kScreenWidth*0.5, self.recommendBtn.bounds.size.height)];
-        [self.topicalBtn setTitle:@"热门" forState:UIControlStateNormal];
-        self.topicalBtn.titleLabel.font=[UIFont boldSystemFontOfSize:20.f];
-        [self.topicalBtn addTarget:self action:@selector(buttonClick2) forControlEvents:UIControlEventTouchUpInside];
-        [self.topicalBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-        self.topicalBtn;
-    })];
-    */
+
     [self.view addSubview:({
         self.scrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
         //self.scrollview=[[UIScrollView alloc]initWithFrame:self.view.bounds];
@@ -106,55 +88,12 @@
             self.tableView1.sectionHeaderHeight=8;
             self.tableView1.sectionFooterHeight=8;
             self.tableView1.contentInset=UIEdgeInsetsMake(-34, 0, 0, 0);
+            [self setupRefresh];
             self.tableView1;
     })];
     
-   // UIView *tableHeaderView1 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth*0.5 , 90.f)];
-    //[tableHeaderView1 addSubview:self.topView];
-    
-
-    /*
-    [self.view addSubview:({
-        self.tableView2=[[UITableView alloc]initWithFrame:CGRectMake(kScreenWidth, 0, kScreenWidth, KScreenHeight-90) style:UITableViewStyleGrouped];
-        self.tableView2.dataSource=self;
-        self.tableView2.delegate=self;
-    
-        self.tableView2.backgroundColor=[UIColor purpleColor];
-        self.tableView2;
-    })];
-    
-*/
-   [self.scrollview addSubview:self.tableView1];
-   // [self.scrollview addSubview:self.tableView2];
-
-}
-/*
--(void)buttonClick1{
-    [self.recommendBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [self.topicalBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-    self.scrollview.contentOffset = CGPointMake(0, 0);
 }
 
--(void)buttonClick2{
-    [self.recommendBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-    [self.topicalBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    self.scrollview.contentOffset = CGPointMake(kScreenWidth, 0);
-}
-
-#pragma mark -UIscrollviewdelegate
--(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-    //获取当前角标
-    NSInteger i =scrollView.contentOffset.x/kScreenWidth;
-    if(i==1){
-        [self.topicalBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [self.recommendBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-    }else if(i==0){
-        [self.recommendBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [self.topicalBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-    }
-
-}
- */
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
@@ -210,13 +149,27 @@
    // [self.navigationController presentViewController:askNavi animated:YES completion:nil];
     [self.navigationController pushViewController:askQuestion animated:YES];
 }
-
+/*
 -(void)setupAllChildViewController{
     //首页
     //热门
     hotTopicViewController *hotVC=[[hotTopicViewController alloc]init];
     hotVC.title=@"热门";
     [self addChildViewController:hotVC];
+}*/
+
+-(void)setupRefresh{
+    self.freshHeader=[[UIView alloc]init];
+    self.freshHeader.frame=CGRectMake(0, 0, self.tableView1.bounds.size.width, 35.f);
+    
+    self.headerLable=[[UILabel alloc]init];
+    self.headerLable.frame=self.freshHeader.bounds;
+    self.headerLable.text=@"↓ 下拉刷新";
+    self.headerLable.textColor=[UIColor grayColor];
+    self.headerLable.textAlignment=NSTextAlignmentCenter;
+    [self.freshHeader addSubview:self.headerLable];
+    [self.tableView1 addSubview:self.freshHeader];
+
 }
     @end
      

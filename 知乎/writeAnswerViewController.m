@@ -30,8 +30,9 @@
     })];
     
     [self.writeAnswer addSubview:({
-        self.questionTitleLable=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 60.f)];
+        self.questionTitleLable=[[UILabel alloc]initWithFrame:CGRectMake(5, 0, self.view.bounds.size.width, 60.f)];
         self.questionTitleLable.text=self.questionTitle;
+        self.questionTitleLable.numberOfLines=0;
         //self.questionTitleLable.backgroundColor=[UIColor grayColor];
         self.questionTitleLable.font=[UIFont boldSystemFontOfSize:20.f];
         self.questionTitleLable;
@@ -43,7 +44,7 @@
     [self.questionTitleLable.layer addSublayer:bottomLine];
     
     [self.writeAnswer addSubview:({
-        self.answerDetail=[[UITextField alloc]initWithFrame:CGRectMake(0, 70.f, self.view.bounds.size.width, 500.f)];
+        self.answerDetail=[[UITextField alloc]initWithFrame:CGRectMake(5, 70.f, self.view.bounds.size.width, 500.f)];
         self.answerDetail.placeholder=@"写回答";
         self.answerDetail.contentHorizontalAlignment=UIControlContentHorizontalAlignmentLeft;
         self.answerDetail.contentVerticalAlignment=UIControlContentVerticalAlignmentTop;

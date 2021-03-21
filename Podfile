@@ -17,4 +17,6 @@ target '知乎' do
     # Pods for testing
   end
 pod 'AFNetworking', '~> 4.0.1'
+pod 'SDWebImage', '~> 5.10.4'
+pod 'MBProgressHUD', '~>1.2.0'
 end

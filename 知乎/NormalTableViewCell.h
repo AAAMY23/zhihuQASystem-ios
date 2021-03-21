@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,strong) NSString *questionCreatorId;
 @property(nonatomic,strong) NSString *answerCreator;
 @property(nonatomic,strong) NSString *questionNickname;
+@property(nonatomic) NSString *answerCAvatarUrl;
 -(void)layoutTableviewCellwithItem:(questionPlazaLoaditem *)listArray;
 @end
 

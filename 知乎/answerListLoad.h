@@ -13,7 +13,7 @@ typedef void(^loadlistDataFinishblock)(BOOL success, NSArray<answerLoaditem *> *
 
 @interface answerListLoad : NSObject
 //加载数据，然后通过block传递数据解析
--(void)loadlistDataFinishWithBlock:(loadlistDataFinishblock)finishBlock answer:(NSString *)answerQuestionId;
+-(void)loadlistDataFinishWithBlock:(loadlistDataFinishblock)finishBlock answer:(NSString *)answerQuestionId requestUrl:(NSString *)requestUrl;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -7,9 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B28942025E5037A009E16B3 /* 未点赞.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B28941F25E5037A009E16B3 /* 未点赞.png */; };
+		2B28942525E50812009E16B3 /* 已点赞.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B28942425E50812009E16B3 /* 已点赞.png */; };
+		2B28943525E7E083009E16B3 /* 已反对.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B28943425E7E083009E16B3 /* 已反对.png */; };
+		2B2E013225ED286F00105A36 /* personalAllAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B2E013125ED286F00105A36 /* personalAllAViewController.m */; };
+		2B2E016425F61A7D00105A36 /* 首页.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B2E016325F61A7D00105A36 /* 首页.png */; };
+		2B2E016C25F61ABF00105A36 /* wode.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B2E016B25F61ABF00105A36 /* wode.png */; };
 		2B2E0D2225CD499400777E38 /* personalAllQViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B2E0D2125CD499400777E38 /* personalAllQViewController.m */; };
 		2B2E0D5225CEC6DC00777E38 /* hotTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B2E0D5125CEC6DC00777E38 /* hotTopicViewController.m */; };
 		2B2E0D7625CEE9A800777E38 /* mainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B2E0D7525CEE9A800777E38 /* mainViewController.m */; };
+		2B2E0D7B25D0322000777E38 /* backgoundImage.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 2B2E0D7A25D0322000777E38 /* backgoundImage.jpeg */; };
+		2B2E0D8025D033BF00777E38 /* selfPhoto.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2B2E0D7F25D033BF00777E38 /* selfPhoto.jpg */; };
+		2B2E0D8625D039FC00777E38 /* updateMyIfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B2E0D8525D039FC00777E38 /* updateMyIfoVC.m */; };
 		2B331EF825A1B915003192CF /* xixi.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2B331EF725A1B915003192CF /* xixi.jpg */; };
 		2B331EFD25A1B92E003192CF /* sucai2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2B331EFC25A1B92E003192CF /* sucai2.jpg */; };
 		2B331F0225A1B99C003192CF /* 可操作.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B331F0125A1B99C003192CF /* 可操作.png */; };
@@ -43,8 +52,8 @@
 		2BD3347325653E2B00CE3DD0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD3347225653E2B00CE3DD0 /* main.m */; };
 		2BD3347D25653E2B00CE3DD0 /* __Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD3347C25653E2B00CE3DD0 /* __Tests.m */; };
 		2BD3348825653E2B00CE3DD0 /* __UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD3348725653E2B00CE3DD0 /* __UITests.m */; };
-		324971DE54EC292A8BA9155A /* Pods___Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A181EBACF78F47530ECC591 /* Pods___Tests.framework */; };
-		976873648413AA3EAF4B783D /* Pods______UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73BB73F6AE793C961F75E669 /* Pods______UITests.framework */; };
+		2F7DAAF21B951E21AFD1799A /* Pods___Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F68F3FFEB0B4E655328625C4 /* Pods___Tests.framework */; };
+		F631503763E58E26CDE4032B /* Pods______UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 224396EF9FEBBF8067A906FE /* Pods______UITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,13 +76,24 @@
 /* Begin PBXFileReference section */
 		055F0B700B23279C702CD665 /* Pods-知乎.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-知乎.release.xcconfig"; path = "Target Support Files/Pods-知乎/Pods-知乎.release.xcconfig"; sourceTree = "<group>"; };
 		1B3E850CFE733D6BD041FAD7 /* Pods-知乎-知乎UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-知乎-知乎UITests.release.xcconfig"; path = "Target Support Files/Pods-知乎-知乎UITests/Pods-知乎-知乎UITests.release.xcconfig"; sourceTree = "<group>"; };
-		1D0F1AE7200357374B02E164 /* Pods___.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods___.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		224396EF9FEBBF8067A906FE /* Pods______UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods______UITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B28941F25E5037A009E16B3 /* 未点赞.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "未点赞.png"; sourceTree = "<group>"; };
+		2B28942425E50812009E16B3 /* 已点赞.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "已点赞.png"; sourceTree = "<group>"; };
+		2B28943425E7E083009E16B3 /* 已反对.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "已反对.png"; sourceTree = "<group>"; };
+		2B2E013025ED286F00105A36 /* personalAllAViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = personalAllAViewController.h; sourceTree = "<group>"; };
+		2B2E013125ED286F00105A36 /* personalAllAViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = personalAllAViewController.m; sourceTree = "<group>"; };
+		2B2E016325F61A7D00105A36 /* 首页.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "首页.png"; path = "../../../../../Desktop/工程实践素材图片/首页.png"; sourceTree = "<group>"; };
+		2B2E016B25F61ABF00105A36 /* wode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wode.png; sourceTree = "<group>"; };
 		2B2E0D2025CD499400777E38 /* personalAllQViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = personalAllQViewController.h; sourceTree = "<group>"; };
 		2B2E0D2125CD499400777E38 /* personalAllQViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = personalAllQViewController.m; sourceTree = "<group>"; };
 		2B2E0D5025CEC6DB00777E38 /* hotTopicViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = hotTopicViewController.h; sourceTree = "<group>"; };
 		2B2E0D5125CEC6DC00777E38 /* hotTopicViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = hotTopicViewController.m; sourceTree = "<group>"; };
 		2B2E0D7425CEE9A800777E38 /* mainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mainViewController.h; sourceTree = "<group>"; };
 		2B2E0D7525CEE9A800777E38 /* mainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mainViewController.m; sourceTree = "<group>"; };
+		2B2E0D7A25D0322000777E38 /* backgoundImage.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = backgoundImage.jpeg; sourceTree = "<group>"; };
+		2B2E0D7F25D033BF00777E38 /* selfPhoto.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = selfPhoto.jpg; sourceTree = "<group>"; };
+		2B2E0D8425D039FC00777E38 /* updateMyIfoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = updateMyIfoVC.h; sourceTree = "<group>"; };
+		2B2E0D8525D039FC00777E38 /* updateMyIfoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = updateMyIfoVC.m; sourceTree = "<group>"; };
 		2B331EF725A1B915003192CF /* xixi.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = xixi.jpg; path = "../../../../../Desktop/工程实践素材图片/xixi.jpg"; sourceTree = "<group>"; };
 		2B331EFC25A1B92E003192CF /* sucai2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = sucai2.jpg; path = "../../../../../Desktop/工程实践素材图片/sucai2.jpg"; sourceTree = "<group>"; };
 		2B331F0125A1B99C003192CF /* 可操作.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "可操作.png"; path = "../../../../../Desktop/工程实践素材图片/可操作.png"; sourceTree = "<group>"; };
@@ -137,12 +157,12 @@
 		2BD3348325653E2B00CE3DD0 /* 知乎UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "知乎UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BD3348725653E2B00CE3DD0 /* __UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = __UITests.m; sourceTree = "<group>"; };
 		2BD3348925653E2B00CE3DD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		73BB73F6AE793C961F75E669 /* Pods______UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods______UITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7A181EBACF78F47530ECC591 /* Pods___Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods___Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		96ECCA6C3A1D1D419650BA92 /* Pods-知乎-知乎UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-知乎-知乎UITests.debug.xcconfig"; path = "Target Support Files/Pods-知乎-知乎UITests/Pods-知乎-知乎UITests.debug.xcconfig"; sourceTree = "<group>"; };
+		98DCC75FCFB3C2B3957BF78A /* Pods___.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods___.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FD8675D781C2E25FF401D14 /* Pods-知乎Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-知乎Tests.release.xcconfig"; path = "Target Support Files/Pods-知乎Tests/Pods-知乎Tests.release.xcconfig"; sourceTree = "<group>"; };
 		C2B53E50481ABAE6D8EC9E79 /* Pods-知乎.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-知乎.debug.xcconfig"; path = "Target Support Files/Pods-知乎/Pods-知乎.debug.xcconfig"; sourceTree = "<group>"; };
 		D1D8E9B94E4EE402E8D60670 /* Pods-知乎Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-知乎Tests.debug.xcconfig"; path = "Target Support Files/Pods-知乎Tests/Pods-知乎Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		F68F3FFEB0B4E655328625C4 /* Pods___Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods___Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,7 +177,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				324971DE54EC292A8BA9155A /* Pods___Tests.framework in Frameworks */,
+				2F7DAAF21B951E21AFD1799A /* Pods___Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,7 +185,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				976873648413AA3EAF4B783D /* Pods______UITests.framework in Frameworks */,
+				F631503763E58E26CDE4032B /* Pods______UITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,9 +195,9 @@
 		14B7A7FAE43E634757C79AD3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1D0F1AE7200357374B02E164 /* Pods___.framework */,
-				73BB73F6AE793C961F75E669 /* Pods______UITests.framework */,
-				7A181EBACF78F47530ECC591 /* Pods___Tests.framework */,
+				98DCC75FCFB3C2B3957BF78A /* Pods___.framework */,
+				224396EF9FEBBF8067A906FE /* Pods______UITests.framework */,
+				F68F3FFEB0B4E655328625C4 /* Pods___Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -198,9 +218,16 @@
 		2B89C4C22573C09B0065C8D9 /* iconBundle */ = {
 			isa = PBXGroup;
 			children = (
+				2B28942425E50812009E16B3 /* 已点赞.png */,
+				2B28941F25E5037A009E16B3 /* 未点赞.png */,
+				2B28943425E7E083009E16B3 /* 已反对.png */,
+				2B2E016B25F61ABF00105A36 /* wode.png */,
+				2B2E016325F61A7D00105A36 /* 首页.png */,
+				2B2E0D7F25D033BF00777E38 /* selfPhoto.jpg */,
 				2B331EF725A1B915003192CF /* xixi.jpg */,
 				2B331F0125A1B99C003192CF /* 可操作.png */,
 				2B331F0625A1B9A8003192CF /* bukecaozuo.png */,
+				2B2E0D7A25D0322000777E38 /* backgoundImage.jpeg */,
 				2B331F0B25A1B9BD003192CF /* v2-a47051e92cf74930bedd7469978e6c08_hd.png */,
 				2B331EFC25A1B92E003192CF /* sucai2.jpg */,
 				2B331F1025A1B9ED003192CF /* homeicon_tab.png */,
@@ -294,10 +321,14 @@
 				2B89C5E82581C27F0065C8D9 /* loginMyPageViewController.m */,
 				2B2E0D2025CD499400777E38 /* personalAllQViewController.h */,
 				2B2E0D2125CD499400777E38 /* personalAllQViewController.m */,
+				2B2E013025ED286F00105A36 /* personalAllAViewController.h */,
+				2B2E013125ED286F00105A36 /* personalAllAViewController.m */,
 				2B2E0D5025CEC6DB00777E38 /* hotTopicViewController.h */,
 				2B2E0D5125CEC6DC00777E38 /* hotTopicViewController.m */,
 				2B2E0D7425CEE9A800777E38 /* mainViewController.h */,
 				2B2E0D7525CEE9A800777E38 /* mainViewController.m */,
+				2B2E0D8425D039FC00777E38 /* updateMyIfoVC.h */,
+				2B2E0D8525D039FC00777E38 /* updateMyIfoVC.m */,
 			);
 			path = "知乎";
 			sourceTree = "<group>";
@@ -431,10 +462,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				2BD3347025653E2B00CE3DD0 /* LaunchScreen.storyboard in Resources */,
+				2B28943525E7E083009E16B3 /* 已反对.png in Resources */,
 				2B331EF825A1B915003192CF /* xixi.jpg in Resources */,
+				2B2E0D8025D033BF00777E38 /* selfPhoto.jpg in Resources */,
+				2B28942525E50812009E16B3 /* 已点赞.png in Resources */,
 				2B331F0725A1B9A8003192CF /* bukecaozuo.png in Resources */,
 				2B331F0C25A1B9BE003192CF /* v2-a47051e92cf74930bedd7469978e6c08_hd.png in Resources */,
+				2B2E0D7B25D0322000777E38 /* backgoundImage.jpeg in Resources */,
+				2B28942025E5037A009E16B3 /* 未点赞.png in Resources */,
+				2B2E016425F61A7D00105A36 /* 首页.png in Resources */,
 				2B331EFD25A1B92E003192CF /* sucai2.jpg in Resources */,
+				2B2E016C25F61ABF00105A36 /* wode.png in Resources */,
 				2BD3346B25653E2A00CE3DD0 /* Main.storyboard in Resources */,
 				2B331F0225A1B99C003192CF /* 可操作.png in Resources */,
 				2B331F1125A1B9ED003192CF /* homeicon_tab.png in Resources */,
@@ -569,6 +607,7 @@
 				2B7FBF7B25909BFC0065FFCE /* writeAnswerViewController.m in Sources */,
 				2B88710925A497C80021A965 /* updateAnswerViewController.m in Sources */,
 				2BD3346825653E2A00CE3DD0 /* ViewController.m in Sources */,
+				2B2E013225ED286F00105A36 /* personalAllAViewController.m in Sources */,
 				2B7FBF5D258C54FB0065FFCE /* questionPlazaLoaditem.m in Sources */,
 				2B7FBF54258B8EE10065FFCE /* qusetionplazaListload.m in Sources */,
 				2B7FBF7225904B350065FFCE /* qaDetailViewController.m in Sources */,
@@ -577,6 +616,7 @@
 				2BD3346225653E2A00CE3DD0 /* AppDelegate.m in Sources */,
 				2B89C5CC2580F91E0065C8D9 /* myPageViewController.m in Sources */,
 				2B88712A25A584350021A965 /* detailAnswerCell.m in Sources */,
+				2B2E0D8625D039FC00777E38 /* updateMyIfoVC.m in Sources */,
 				2B7FBEAF258341E10065FFCE /* registerstep2ViewController.m in Sources */,
 				2B7FC0E72598CE0F0065FFCE /* answerLoaditem.m in Sources */,
 				2B2E0D2225CD499400777E38 /* personalAllQViewController.m in Sources */,

@@ -7,6 +7,7 @@
 
 #import "registerViewController.h"
 #import "registerstep2ViewController.h"
+#import <MBProgressHUD.h>
 
 @interface registerViewController ()
 @property(nonatomic,strong) UILabel *reglable;
@@ -73,12 +74,20 @@
         //NSLog(@"message:%@",registerData[@"message"]);
         if([registerData[@"code"] intValue]==1002){
             dispatch_async(dispatch_get_main_queue(), ^{
+                
+                MBProgressHUD *hud=[MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                hud.mode = MBProgressHUDModeText;
+                hud.label.text=registerData[@"message"];
+                [hud hideAnimated:YES afterDelay:2];
+            /*
             UILabel *repeatusername=[[UILabel alloc]initWithFrame:CGRectMake(100.f, 450.f, 100.f, 80.f)];
             repeatusername.text=registerData[@"message"];
             repeatusername.textColor=[UIColor whiteColor];
             repeatusername.backgroundColor=[UIColor blackColor];
             [self.view addSubview:repeatusername];
+             */
             });
+             
             return;
         }
         else if([registerData[@"code"] intValue]==200) {

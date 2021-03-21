@@ -42,7 +42,7 @@
         self.personalQTableView;
         
     })];
-    // Do any additional setup after loading the view.
+
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return [self.dataArray count];
@@ -67,6 +67,7 @@
     UILabel *questionTitle=[[UILabel alloc]initWithFrame:CGRectMake(20.f, 10.f,tableViewCell.bounds.size.width, 30.f)];
     questionTitle.text=self.data.title;
     [tableViewCell.contentView addSubview:questionTitle];
+    
     UILabel *questionCreateAt=[[UILabel alloc]initWithFrame:CGRectMake(20.f, 35.f, 150.f, 30.f)];
     questionCreateAt.text=self.data.createAt;
     questionCreateAt.font=[UIFont systemFontOfSize:12.f];

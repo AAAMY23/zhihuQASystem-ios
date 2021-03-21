@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,strong) NSString *userId;
 @property(nonatomic,strong) NSString *answerContent;
 @property(nonatomic,strong) NSString *answerId;
+@property(nonatomic
+          ) CGFloat cellHeight;
 -(void)layoutTableviewCellwithItem:(answerLoaditem *)listArray;
 @end
 

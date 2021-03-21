@@ -16,6 +16,7 @@
 @property(nonatomic,strong) UIScrollView *titleScrollView;
 @property(nonatomic,strong) UIScrollView *contentScrollView;
 @property(nonatomic,weak) UIButton *selectBtn;
+@property(nonatomic,strong) UIView *currentLine;
 @end
 
 @implementation mainViewController
@@ -37,7 +38,6 @@
     [self setupAllChildViewController];
     [self setupContentScrollView];
     [self setupAllTitle];
-    
 }
 
 -(void)setupTitleScrollView{
@@ -80,8 +80,9 @@
         [titleBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
         titleBtn.titleLabel.font=[UIFont boldSystemFontOfSize:20.f];
         [titleBtn addTarget:self action:@selector(titleBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-        if(i==0)
+        if(i==0){
            [self titleBtnClick:titleBtn];
+        }
         [self.titleScrollView addSubview:titleBtn];
     }
     
@@ -90,11 +91,14 @@
     self.titleScrollView.showsHorizontalScrollIndicator=NO;
 }
 
+
+
 -(void)titleBtnClick:(UIButton *)button{
     [self.selectBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     self.selectBtn=button;
     
+
     CGFloat x=self.contentScrollView.bounds.size.width*button.tag;
     UIViewController *vc=self.childViewControllers[button.tag];
     vc.view.frame=CGRectMake(x, 0, self.contentScrollView.bounds.size.width, self.contentScrollView.bounds.size.height);

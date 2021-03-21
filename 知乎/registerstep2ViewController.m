@@ -7,6 +7,7 @@
 
 #import "registerstep2ViewController.h"
 #import "ViewController.h"
+#import <MBProgressHUD.h>
 
 @interface registerstep2ViewController ()
 @property(nonatomic,strong) UITextField *password1text;
@@ -115,11 +116,17 @@
         [registerDatatask resume];
     }
         else{
+            MBProgressHUD *hud=[MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            hud.mode = MBProgressHUDModeText;
+            hud.label.text=@"两次密码输入不一致";
+            [hud hideAnimated:YES afterDelay:2];
+            /*
             UILabel *notsamePassword=[[UILabel alloc]initWithFrame:CGRectMake(100.f, 450.f, 180.f, 80.f)];
                 notsamePassword.text=@"两次密码输入不一致";
                 notsamePassword.textColor=[UIColor whiteColor];
                 notsamePassword.backgroundColor=[UIColor blackColor];
             [self.view addSubview:notsamePassword];
+             */
             return;
         }
 }

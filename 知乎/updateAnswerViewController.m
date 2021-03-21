@@ -7,6 +7,7 @@
 
 #import "updateAnswerViewController.h"
 #import "qaDetailViewController.h"
+#import <MBProgressHUD.h>
 
 @interface updateAnswerViewController ()
 @property(nonatomic,strong) UIScrollView *writeAnswer;
@@ -26,10 +27,10 @@
     })];
     
     [self.writeAnswer addSubview:({
-        self.questionTitleLable=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 60.f)];
+        self.questionTitleLable=[[UILabel alloc]initWithFrame:CGRectMake(5, 0, self.view.bounds.size.width, 60.f)];
         self.questionTitleLable.text=self.questionTitle;
-        //self.questionTitleLable.backgroundColor=[UIColor grayColor];
         self.questionTitleLable.font=[UIFont boldSystemFontOfSize:20.f];
+        self.questionTitleLable.numberOfLines=0;
         self.questionTitleLable;
     })];
     CALayer *bottomLine = [CALayer layer];
@@ -39,7 +40,7 @@
     [self.questionTitleLable.layer addSublayer:bottomLine];
     
     [self.writeAnswer addSubview:({
-        self.answerDetail=[[UITextField alloc]initWithFrame:CGRectMake(0, 70.f, self.view.bounds.size.width, 500.f)];
+        self.answerDetail=[[UITextField alloc]initWithFrame:CGRectMake(5, 70.f, self.view.bounds.size.width, 500.f)];
         self.answerDetail.placeholder=@"";
         self.answerDetail.backgroundColor=[UIColor whiteColor];
         self.answerDetail.text=self.answerContent;
@@ -52,6 +53,7 @@
 }
 
 -(void)pushqaDetailViewController{
+    
     //NSURL *answerUrl=[NSURL URLWithString:@"http://localhost:7300/mock/5fdb1c7704327c25742b1dff/zhihuQA-B/answer/add"];
     NSURL *answerUrl=[NSURL URLWithString:[NSString stringWithFormat:@"http://8.136.142.201:9090/answer/%@",self.answerId]];
     NSMutableURLRequest *answerRequest=[NSMutableURLRequest requestWithURL:answerUrl];
@@ -76,6 +78,11 @@
             NSDictionary *registerData=[NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
             NSLog(@"code:%@",registerData[@"code"]);
             NSLog(@"message:%@",registerData[@"message"]);
+            
+            MBProgressHUD *hud=[MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            hud.mode = MBProgressHUDModeDeterminateHorizontalBar;
+            hud.label.text=@"答案修改成功";
+            [hud hideAnimated:YES afterDelay:1.5];
             
             qaDetailViewController *qaDetailvc=[[qaDetailViewController alloc]init];
             qaDetailvc.questionTitle=self.questionTitle;

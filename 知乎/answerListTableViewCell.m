@@ -9,6 +9,7 @@
 //#import "questionPlazaLoaditem.h"
 #import "answerListLoad.h"
 #import "answerLoaditem.h"
+#import <SDWebImage.h>
 
 @interface answerListTableViewCell()
 @property(nonatomic,strong,readwrite) UIImageView *selfPhoto;
@@ -71,13 +72,13 @@
 }
 -(void)layoutTableviewCellwithItem:(answerLoaditem
                                     *)listArray{
-    self.selfPhoto.image=[UIImage imageNamed:@"xixi.jpg"];
+    [self.selfPhoto sd_setImageWithURL:[NSURL URLWithString:listArray.answerCAvatarUrl]];
+    //self.selfPhoto.image=[UIImage imageNamed:@"xixi.jpg"];
     self.nickName.text=listArray.answerNickname;
     //self.nickName.text=@"橘兮兮";
-    self.selfDescribe.text=@"干饭猫";
+    //self.selfDescribe.text=@"干饭猫";
     self.answer.text=listArray.content;
     //self.good.text=@"1.9w赞同";
-    self.selfDescribe.text=@"干饭猫";
     self.userId=listArray.answerUserId;
     self.answerContent=listArray.content;
     self.answerId=listArray.answerId;

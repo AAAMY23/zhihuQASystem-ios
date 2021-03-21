@@ -23,6 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor=[UIColor whiteColor];
+    self.tabBarController.tabBar.hidden=YES;
     // Do any additional setup after loading the view.
     /*[self.view addSubview:({
         self.scrollview=[[UIScrollView alloc]initWithFrame:self.view.bounds];
@@ -32,32 +33,43 @@
     })];
 */
     [self.view addSubview:({
-        self.mainQ=[[UITableView alloc]initWithFrame:CGRectMake(0, 200.f, self.view.bounds.size.width, self.view.bounds.size.height*1.5) style:UITableViewStylePlain];
+        self.mainQ=[[UITableView alloc]initWithFrame:CGRectMake(0, 150.f, self.view.bounds.size.width, self.view.bounds.size.height*1.5) style:UITableViewStylePlain];
         self.mainQ.separatorStyle=UITableViewCellSelectionStyleNone;
         //self.mainQ.tableHeaderView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 80.f)];
         self.mainQ;
     })];
     
     [self.view addSubview:({
-        self.textTitle=[[UITextField alloc]initWithFrame:CGRectMake(0, 100.f, self.view.bounds.size.width, 100.f)];
-         self.textTitle.placeholder=@"输入问题并以问号结尾";
+        self.textTitle=[[UITextField alloc]initWithFrame:CGRectMake(5, 100.f, self.view.bounds.size.width, 100.f)];
+        // self.textTitle.placeholder=@"输入问题并以问号结尾";
+        NSString *holder=@"输入问题并以问号结尾";
+        NSMutableAttributedString *placeholder = [[NSMutableAttributedString alloc]initWithString:holder];
+        [placeholder addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:20.f] range:NSMakeRange(0, holder.length)];
+        self.textTitle.attributedPlaceholder=placeholder;
          self.textTitle.contentHorizontalAlignment=UIControlContentHorizontalAlignmentLeft;
          self.textTitle.contentVerticalAlignment=UIControlContentVerticalAlignmentTop;
          self.textTitle.keyboardType=UIKeyboardTypeDefault;
          self.textTitle.autocapitalizationType=UITextAutocapitalizationTypeNone;
-         self.textTitle.backgroundColor=[UIColor lightGrayColor];
+         //self.textTitle.backgroundColor=[UIColor lightGrayColor];
+        self.textTitle.font=[UIFont boldSystemFontOfSize:20.f];
          self.textTitle;
     })];
-    
-    UILabel *tip=[[UILabel alloc]initWithFrame:CGRectMake(5, 0, self.view.bounds.size.width-10, 40)];
-    tip.text=@"让你的第一个提问获得更多解答·保持文字简练·添加合适的话题";
+    /*
+    UILabel *tip=[[UILabel alloc]initWithFrame:CGRectMake(5, 0, self.view.bounds.size.width-10, 60)];
+    tip.text=@"让你的第一个提问获得更多解答·保持文字简练";
+    tip.numberOfLines=0;
+    */
+    CALayer *bottomLine=[CALayer layer];
+    bottomLine.frame=CGRectMake(0, 100.f, self.textTitle.bounds.size.width, 1.f);
+    bottomLine.backgroundColor = [UIColor colorWithRed:220/255.0 green:220/255.0 blue:220/255.0 alpha:1.0].CGColor;
+    [self.textTitle.layer addSublayer:bottomLine];
     
     [self.mainQ addSubview:({
-        self.textContent=[[UITextField alloc]initWithFrame:CGRectMake(0, 40.f, self.view.bounds.size.width, 200)];
+        self.textContent=[[UITextField alloc]initWithFrame:CGRectMake(5, 0, self.view.bounds.size.width, 200)];
         self.textContent.placeholder=@"对问题补充说明，可以更快获得解答（选填）";
         self.textContent;
     })];
-    [self.mainQ addSubview:tip];
+    //[self.mainQ addSubview:tip];
     
     //差一个以问号结尾的判断
     self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"发布问题" style:UIBarButtonItemStylePlain target:self action:@selector(pushquestionPlaza)];

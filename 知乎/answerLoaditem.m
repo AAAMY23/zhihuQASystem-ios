@@ -15,7 +15,7 @@
     self.answerCreator=[dictonary objectForKey:@"creator"];
     self.answerUserId=[self.answerCreator objectForKey:@"userId"];
     self.answerNickname=[self.answerCreator objectForKey:@"nickname"];
-    
+    self.answerCAvatarUrl=[self.answerCreator objectForKey:@"avatarUrl"];
     
 
 }

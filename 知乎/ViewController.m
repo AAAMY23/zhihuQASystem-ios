@@ -13,6 +13,8 @@
 #import "loginMyPageViewController.h"
 #import "registerViewController.h"
 #import "AppDelegate.h"
+#import "mainViewController.h"
+#import <MBProgressHUD.h>
 
 @interface ViewController ()<NSURLSessionDelegate,UITextFieldDelegate>
 //weak和strong的意思是强弱指针
@@ -40,21 +42,10 @@
     //默认的UIButton提供imageView和titleLable的基本布局
     //通过设置enabled（能否被点击）selected（是否已经被选中）highlighted（点击过程时的样式）
     self.view.backgroundColor=[UIColor whiteColor];
-    self.navigaView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 50.f)];
-    [self.navigaView addSubview:({
-        self.deleteBnt=[[UIButton alloc]initWithFrame:CGRectMake(self.navigaView.bounds.size.width-50, 10.f, 40.f, 40.f)];
-        [self.deleteBnt setTitle:@"X" forState:UIControlStateNormal];
-        [self.deleteBnt setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        self.deleteBnt.titleLabel.font=[UIFont systemFontOfSize:25.f];
-        [self.deleteBnt addTarget:self action:@selector(dismissCurrentView) forControlEvents:UIControlEventTouchUpInside];
-        self.deleteBnt;
-    })];
-    CALayer *bottomLine4 = [CALayer layer];
-    bottomLine4.frame = CGRectMake(0.f, 60.f, self.view.bounds.size.width, 1.f);
-    bottomLine4.backgroundColor = [UIColor colorWithRed:220/255.0 green:220/255.0 blue:220/255.0 alpha:1.0].CGColor;
-    [self.navigaView.layer addSublayer:bottomLine4];
-    [self.view addSubview:self.navigaView];
-   // self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"关闭" style:UIBarButtonItemStylePlain target:self action:@selector(dismissCurrentView)];
+ 
+    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop  target:self action:@selector(dismissCurrentView)];
+    self.navigationItem.rightBarButtonItem = rightButton;
+
  
     
     
@@ -73,7 +64,8 @@
     [self.view addSubview:lable];
     [self.view addSubview:({
         self.usernameTextfield=[[UITextField alloc]initWithFrame:CGRectMake(40.f, 220.f, 301.f, 40.f)];
-        self.usernameTextfield.placeholder=@"手机号或邮箱";
+        self.usernameTextfield.placeholder=@"用户名";
+        self.usernameTextfield.textContentType=UITextContentTypeUsername;
         self.usernameTextfield.font=[UIFont fontWithName:@"boldface" size:12.f];
         self.usernameTextfield.textColor=[UIColor colorWithRed:21/255.0 green:21/255.0 blue:21/255.0 alpha:1.0];
         self.usernameTextfield.autocorrectionType=UITextAutocorrectionTypeNo;
@@ -93,7 +85,20 @@
         self.passwordTextfield1=[[UITextField alloc]initWithFrame:CGRectMake(40.f, 290.f, 301.f, 40.f)];
         self.passwordTextfield1.placeholder=@"密码";
         //密码输入之后会保密
-        //self.passwordTextfield1.secureTextEntry=YES;
+        self.passwordTextfield1.textContentType=UITextContentTypePassword;
+        
+        self.passwordTextfield1.secureTextEntry=YES;
+        /*
+        if (@available(iOS 11.0, *)) {
+            self.passwordTextfield1.textContentType = UITextContentTypePassword;
+            //self.passwordTextfield1.textContentType = UITextContentTypePassword;
+        }
+        if (@available(iOS 12.0, *)) {
+            _tfPwd.textContentType = UITextContentTypeNewPassword;
+            _tfRePwd.textContentType = UITextContentTypeNewPassword;
+        } else {
+            // Fallback on earlier versions
+        }*/
         self.passwordTextfield1.clearButtonMode=UITextFieldViewModeWhileEditing;
         self.passwordTextfield1.autocapitalizationType=UITextAutocapitalizationTypeNone;
         self.passwordTextfield1;
@@ -130,16 +135,12 @@
     
 }
     
-    /*UILabel *lable2=[[UILabel alloc]init];
-    lable2.frame=CGRectMake(40.f, 440.f, 301.f, 40.f);
-    lable2.text=@"未注册邮箱验证后自动登录，注册即代表同意《知乎协议》《隐私保护指引》";
-    lable2.font=[UIFont systemFontOfSize:12.f];
-    lable2.numberOfLines=0;
-    [self.view addSubview:lable2];*/
-    //UISwitch *sw=[[UISwitch alloc]init];
-    //[self.view addSubview:sw];
 
 -(void)pushController{//成功登录 跳转问题广场
+    MBProgressHUD *hud=[MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.label.text=@"加载中……";
+    [hud hideAnimated:YES afterDelay:1];
 /*GET:
   协议://主机地址/接口名称?username=***&password=***&type=JSON
  POST:加密型较好 单独设置请求体
@@ -175,54 +176,60 @@
               if([loginData[@"code"] intValue]==200) {
                 [self saveUserId:userID1[@"userId"]];
                 [self saveToken:loginData[@"token"]];
-               /*
-                questionPlazaViewController *viewController=[[questionPlazaViewController alloc] init];
-                loginMyPageViewController *mPage=[[loginMyPageViewController alloc]init];
-                UITabBarController *QP=[[UITabBarController alloc]init];
-
-
-                [QP setViewControllers:@[viewController,mPage]];
-                  //[QP setViewControllers:@[navigation1,navigation2]];
-                  QP.navigationItem.hidesBackButton=YES;
-                  //viewController.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"我要提问" style:UIBarButtonItemStylePlain target:self action:@selector(askQuestionpushaskQ)];
-
-                
-                QP.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"homeicon_tab"] style:UIBarButtonItemStylePlain target:self action:@selector(askQuestionpushaskQ)];
-                  //[self.navigationController popViewControllerAnimated:YES];
-                 // [self.navigationController popToViewController:QP animated:YES];
-                 //[self.navigationController popToRootViewControllerAnimated:YES];
-                  //[self.navigationController pushViewController:QP animated:YES];
-                  //应该是每次问题广场要显示出来的时候 都会自动刷新页面
-                */
+                  
+                MBProgressHUD  *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                        hud.label.text = NSLocalizedString(@"加载中...", @"HUD loading title");
                  [self dismissViewControllerAnimated:YES completion:^{
 
-                          // 这是从一个模态出来的页面跳到tabbar的某一个页面
+                    // 这是从一个模态出来的页面跳到tabbar的某一个页面
 
-                          AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 
-                          UITabBarController *tabViewController = (UITabBarController *) appDelegate.window.rootViewController;
-
-                          [tabViewController setSelectedIndex:0];
+                    UITabBarController *tabViewController = (UITabBarController *) appDelegate.window.rootViewController;
+                     
+                     mainViewController *mainVC=[[mainViewController alloc]init];
+                     UINavigationController *navigation1=[[UINavigationController alloc]initWithRootViewController:mainVC];
+                     navigation1.tabBarItem.title=@"首页";
+                     navigation1.tabBarItem.image=[UIImage imageNamed:@"首页.png"];
+                     loginMyPageViewController *controller3=[[loginMyPageViewController alloc]init];
+                     UINavigationController *navigation3=[[UINavigationController alloc]initWithRootViewController:controller3];
+                     navigation3.tabBarItem.title=@"我的";
+                     navigation3.tabBarItem.image=[UIImage imageNamed:@"wode.png"];
+                     [tabViewController setViewControllers:@[navigation1,navigation3]];
+                     
+                        [tabViewController setSelectedIndex:0];
 
                       }];
               }
               else if([loginData[@"code"] intValue]==1003){
-                NSLog(@"code:%@",loginData[@"code"]);
-                NSLog(@"message:%@",loginData[@"message"]);
-                UILabel *wrongusername=[[UILabel alloc]initWithFrame:CGRectMake(100.f, 450.f, 100.f, 80.f)];
-                wrongusername.text=loginData[@"message"];
-                wrongusername.textColor=[UIColor whiteColor];
-                wrongusername.backgroundColor=[UIColor blackColor];
-                [self.view addSubview:wrongusername];
+                  
+                  MBProgressHUD *hud=[MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                  hud.mode = MBProgressHUDModeText;
+                  hud.label.text=loginData[@"message"];
+                  [hud hideAnimated:YES afterDelay:2];
+                  
+               // NSLog(@"code:%@",loginData[@"code"]);
+               // NSLog(@"message:%@",loginData[@"message"]);
+               // UILabel *wrongusername=[[UILabel alloc]initWithFrame:CGRectMake(100.f, 450.f, 100.f, 80.f)];
+               // wrongusername.text=loginData[@"message"];
+               // wrongusername.textColor=[UIColor whiteColor];
+                //wrongusername.backgroundColor=[UIColor blackColor];
+                //[self.view addSubview:wrongusername];
                 return;}
               else if([loginData[@"code"] intValue]==1004){
-                NSLog(@"code:%@",loginData[@"code"]);
-                NSLog(@"message:%@",loginData[@"message"]);
-                UILabel *wrongpasswordusername=[[UILabel alloc]initWithFrame:CGRectMake(100.f, 450.f, 140.f, 80.f)];
-                  wrongpasswordusername.text=loginData[@"message"];
-                  wrongpasswordusername.textColor=[UIColor whiteColor];
-                  wrongpasswordusername.backgroundColor=[UIColor blackColor];
-                [self.view addSubview:wrongpasswordusername];
+                  
+                  MBProgressHUD *hud=[MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                  hud.mode = MBProgressHUDModeText;
+                  hud.label.text=loginData[@"message"];
+                  [hud hideAnimated:YES afterDelay:2];
+               
+                  //NSLog(@"code:%@",loginData[@"code"]);
+                //NSLog(@"message:%@",loginData[@"message"]);
+               // UILabel *wrongpasswordusername=[[UILabel alloc]initWithFrame:CGRectMake(100.f, 450.f, 140.f, 80.f)];
+                 // wrongpasswordusername.text=loginData[@"message"];
+                // wrongpasswordusername.textColor=[UIColor whiteColor];
+                 // wrongpasswordusername.backgroundColor=[UIColor blackColor];
+              //  [self.view addSubview:wrongpasswordusername];
                 return;}
            // }
     });

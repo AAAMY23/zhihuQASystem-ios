@@ -66,8 +66,8 @@
     //创建一个view控制器
     
     ViewController *viewController=[[ViewController alloc] init];
-    //UINavigationController *vc=[[UINavigationController alloc]initWithRootViewController:viewController];
-    [self.navigationController presentViewController:viewController animated:YES completion:nil];
+    UINavigationController *vc=[[UINavigationController alloc]initWithRootViewController:viewController];
+    [self.navigationController presentViewController:vc animated:YES completion:nil];
     //[self.navigationController pushViewController:viewController animated:YES];
 }
 

@@ -32,17 +32,20 @@
     loginMyPageViewController *controller3=[[loginMyPageViewController alloc]init];
     
     UINavigationController *navigation1=[[UINavigationController alloc]initWithRootViewController:mainVC];
+    navigation1.tabBarItem.image=[UIImage imageNamed:@"首页.png"];
     navigation1.tabBarItem.title=@"首页";
     
     UINavigationController *navigation2=[[UINavigationController alloc]initWithRootViewController:controller2];
+    navigation2.tabBarItem.image=[UIImage imageNamed:@"wode.png"];
     navigation2.tabBarItem.title=@"未登录";
     
     UINavigationController *navigation3=[[UINavigationController alloc]initWithRootViewController:controller3];
+    navigation3.tabBarItem.image=[UIImage imageNamed:@"wode.png"];
     navigation3.tabBarItem.title=@"我的";
     
     UITabBarController *tabbarController=[[UITabBarController alloc]init];
     //self.navigationcontroller1=[[UINavigationController alloc]initWithRootViewController:tabbarController];
-
+/*
     self.userdefault=[NSUserDefaults standardUserDefaults];
     if([self.userdefault objectForKey:@"userId"]){
         [tabbarController setViewControllers:@[navigation1,navigation3]];
@@ -50,6 +53,7 @@
     }
     else
     //[tabbarController setViewControllers:@[viewController,controller2]];
+ */
     [tabbarController setViewControllers:@[navigation1,navigation2]];
     //navigationcontroller.navigationBar.topItem.title=@"欢迎来到知乎";
     

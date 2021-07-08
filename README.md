@@ -38,5 +38,8 @@ User Story 3
 运行方法：  
 ----------
 打包下载文档，在macbook上下载xcode最新版（注：旧版有些功能不能正常运行），使用iphone12模拟机即可运行。  
+
+简要业务流程：
+---------
 ![image](https://user-images.githubusercontent.com/72694307/124938483-e9319d80-e03a-11eb-9a03-0a92bbae9549.png)
 

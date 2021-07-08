@@ -22,7 +22,7 @@ User Story 3
 运行方法：  
 打包下载文档，在macbook上下载xcode最新版（注：旧版有些功能不能正常运行），使用iphone12模拟机即可运行。  
 
-项目要点:
+项目要点:  
 1、本项目整体采用MVC架构  
 2、利用cocoapods进行第三方库的下载与管理  
 3、利用afnetworking进行网络请求  
